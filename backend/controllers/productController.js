@@ -3,8 +3,6 @@ const Product=require("../models/productModels");
 const ApiFeatures = require("../utils/apifeatures");
 const createApiFeatures = require('../utils/apifeatures'); // Adjust the path accordingly
 
-// Your other imports and code
-
 
 //create Product -- Admin only admin can access
 exports.createProduct= async(req, res, next)=>{
@@ -13,7 +11,7 @@ exports.createProduct= async(req, res, next)=>{
         success:true,
         product
     })
-    console.log(product);
+    //console.log(product);
 }
 
 
@@ -48,7 +46,7 @@ exports.getProductDetails= async (req, res, next)=>{
 
     res.status(200).json({
         success:true,
-        product
+        product,
     })
 
 }
