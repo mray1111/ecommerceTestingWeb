@@ -1,4 +1,9 @@
 const Product=require("../models/productModels");
+// const ApiFeatures = require("../utils/apifeatures");
+const ApiFeatures = require("../utils/apifeatures");
+const createApiFeatures = require('../utils/apifeatures'); // Adjust the path accordingly
+
+// Your other imports and code
 
 
 //create Product -- Admin only admin can access
@@ -12,17 +17,23 @@ exports.createProduct= async(req, res, next)=>{
 }
 
 
-
-//get all products
-exports.getAllProducts= async (req, res) =>{
-
-    const products= await Product.find();
-
+// Get All Product
+exports.getAllProducts = (async (req, res, next) => {
+    
+    const resultPerPage=2;
+    const productCount= await Product.countDocuments();
+    const apiFeature = new ApiFeatures(Product.find(), req.query)
+      .search()
+      .filter()
+      .pagination(resultPerPage);
+  
+    let products = await apiFeature.query;
     res.status(200).json({
-        success:true,
-        products
-    })
-}
+      success: true,
+      products,
+      productCount,
+    });
+  });
 
 //get single Product
 exports.getProductDetails= async (req, res, next)=>{
