@@ -1,6 +1,6 @@
 const User=require("../models/userModel");
-const catchAsyncErrors=require("../middleware/catchAsyncErrors")
-
+const catchAsyncErrors=require("../middleware/catchAsyncErrors");
+const sendToken=require('../utils/jwtToken');
 //Register a User
 exports.registerUser=async(req,res,next)=>{
     const {name, email, password}=req.body;
@@ -16,13 +16,15 @@ exports.registerUser=async(req,res,next)=>{
     });
 
     // console.log(user); 
-    const token=user.getJWTToken();
+    // const token=user.getJWTToken();
 
-    res.status(201).json({
-        success:true,
-        token,
-        user
-    });
+    // res.status(201).json({
+    //     success:true,
+    //     token,
+    //     user
+    // });
+
+    sendToken(user,201,res);
 };
 
 //login User
@@ -50,11 +52,26 @@ exports.loginUser= catchAsyncErrors(async(req, res, next)=>{
 
        // console.log(isPasswordMatched);
 
-    const token=user.getJWTToken();
-    //console.log(token)
-    res.status(201).json({
-        success:true,
-        token,
-        user
+    // const token=user.getJWTToken();
+    // //console.log(token)
+    // res.status(201).json({
+    //     success:true,
+    //     token,
+    //     user
+    // });
+
+    sendToken(user,200,res);
+});
+
+// Logout User
+exports.logout = catchAsyncErrors(async (req, res, next) => {
+    res.cookie("token", null, {
+      expires: new Date(Date.now()),
+      httpOnly: true,
     });
-})
+  
+    res.status(200).json({
+      success: true,
+      message: "Logged Out",
+    });
+  });
