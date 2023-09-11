@@ -30,7 +30,6 @@ exports.registerUser=async(req,res,next)=>{
 //login User
 exports.loginUser= catchAsyncErrors(async(req, res, next)=>{
     const {email, password}=req.body;
-
         //checking if user has given password and email both
         if(!email || !password){
             return next(new ErrorHander("Please enter Email & Password",400));
@@ -50,8 +49,7 @@ exports.loginUser= catchAsyncErrors(async(req, res, next)=>{
             return next(new ErrorHander("Invalid email or password ",401));
         }
 
-       // console.log(isPasswordMatched);
-
+    // console.log(isPasswordMatched);
     // const token=user.getJWTToken();
     // //console.log(token)
     // res.status(201).json({
