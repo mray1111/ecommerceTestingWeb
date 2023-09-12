@@ -2,7 +2,7 @@ const Product=require("../models/productModels");
 // const ApiFeatures = require("../utils/apifeatures");
 const ApiFeatures = require("../utils/apifeatures");
 const createApiFeatures = require('../utils/apifeatures'); // Adjust the path accordingly
-const ErrorHander = require("../utils/errorhander");
+const ErrorHander = require("../utils/errorHander");
 const catchAsyncErrors=require("../middleware/catchAsyncErrors");
 
 //create Product -- Admin only admin can access

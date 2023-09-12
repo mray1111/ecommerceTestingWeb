@@ -21,10 +21,10 @@ const sendEmail = async (options) => {
   await transporter.sendMail(mailOptions);
 };
 
-console.log(process.env.SMPT_HOST)
-console.log(process.env.SMPT_PORT)
-console.log(process.env.SMPT_SERVICE)
-console.log(process.env.SMPT_MAIL)
-console.log(process.env.SMPT_PASSWORD)
+// console.log(process.env.SMPT_HOST)
+// console.log(process.env.SMPT_PORT)
+// console.log(process.env.SMPT_SERVICE)
+// console.log(process.env.SMPT_MAIL)
+// console.log(process.env.SMPT_PASSWORD)
 
 module.exports = sendEmail;
