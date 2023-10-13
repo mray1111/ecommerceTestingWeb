@@ -16,17 +16,15 @@ function App() {
   }, []);
 
   return (
-    <div>
       
      
-      <BrowserRouter>
-
+  <BrowserRouter>
+      <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
-      </BrowserRouter>
-      <Footer />
-    </div>
+        <Footer />
+    </BrowserRouter>
   );
 }
 
