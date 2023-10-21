@@ -17,6 +17,7 @@
   padding: 0 5vmax;
   flex-wrap: wrap;
   justify-content: center;
+  min-height: 30vh;
 }
 
 .filterBox {

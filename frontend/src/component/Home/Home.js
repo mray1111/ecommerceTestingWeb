@@ -32,6 +32,7 @@ const Home = () => {
     dispatch(getProduct());
   }, [dispatch, error, alert]);
 
+  
   return (
     <Fragment>
       {loading ? (

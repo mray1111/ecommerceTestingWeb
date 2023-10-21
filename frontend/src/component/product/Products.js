@@ -8,6 +8,8 @@ import ProductCard from '../Home/ProductCard';
 import Pagination from 'react-js-pagination';
 import Slider from '@mui/material/Slider';
 import Typography from '@mui/material/Typography';
+import { useAlert } from 'react-alert';
+import Metadata from '../layout/Metadata';
 
 const categories = [
   'Laptop',
@@ -24,6 +26,7 @@ const categories = [
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
+  const alert=useAlert();
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState('');
@@ -49,8 +52,13 @@ const Products = ({ match }) => {
   };
 
   useEffect(() => {
-    dispatch(getProduct(keyword, currentPage, price, category));
-  }, [dispatch, keyword, currentPage, price, category]);
+
+    if(error){
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+    dispatch(getProduct(keyword, currentPage, price, category, ratings));
+  }, [dispatch, keyword, currentPage, price, category, ratings,alert,error]);
 
   return (
     <Fragment>
@@ -58,6 +66,7 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
+          <Metadata title="PRODUCTS--- ECOMMERCE India ka own AMAZON "></Metadata>
           <h2 className="productsHeading">Products</h2>
           <div className="container">
             <div className="products">
@@ -67,46 +76,50 @@ const Products = ({ match }) => {
                 ))}
             </div>
 
-            <div className="filterBox">
-              <Typography>Price</Typography>
+              {keyword && 
 
-              <Slider
-                value={price}
-                onChange={priceHandler}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                min={0}
-                max={25000}
-              />
+                        <div className="filterBox">
+                        <Typography>Price</Typography>
 
-              <Typography>Categories</Typography>
-              <ul className="categoryBox">
-                {categories.map((category) => (
-                  <li
-                    className="category-link"
-                    key={category}
-                    onClick={() => setCategory(category)}
-                  >
-                    {category}
-                  </li>
-                ))}
-              </ul>
-              <fieldset>
-                <Typography component="legend" id="rating-legend">
-                  Ratings Above
-                </Typography>
-                <Slider
-                  value={ratings}
-                  onChange={(e, newRating) => {
-                    setRatings(newRating);
-                  }}
-                  aria-labelledby="rating-legend"
-                  valueLabelDisplay='auto'
-                  min={0}
-                  max={5}
-                />
-              </fieldset>
-            </div>
+                        <Slider
+                          value={price}
+                          onChange={priceHandler}
+                          valueLabelDisplay="auto"
+                          aria-labelledby="range-slider"
+                          min={0}
+                          max={25000}
+                        />
+
+                        <Typography>Categories</Typography>
+                        <ul className="categoryBox">
+                          {categories.map((category) => (
+                            <li
+                              className="category-link"
+                              key={category}
+                              onClick={() => setCategory(category)}
+                            >
+                              {category}
+                            </li>
+                          ))}
+                        </ul>
+                        <fieldset>
+                          <Typography component="legend" id="rating-legend">
+                            Ratings Above
+                          </Typography>
+                          <Slider
+                            value={ratings}
+                            onChange={(e, newRating) => {
+                              setRatings(newRating);
+                            }}
+                            aria-labelledby="rating-legend"
+                            valueLabelDisplay='auto'
+                            min={0}
+                            max={5}
+                          />
+                        </fieldset>
+                        </div>    
+                
+              }
           </div>
 
           {resultPerPage < productsCount && (
