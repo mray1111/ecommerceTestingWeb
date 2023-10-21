@@ -66,7 +66,7 @@ const Products = ({ match }) => {
         <Loader />
       ) : (
         <Fragment>
-          <Metadata title="PRODUCTS--- ECOMMERCE India ka own AMAZON "></Metadata>
+          <Metadata title="PRODUCTS--- ECOMMERCE India ka  own AMAZON "></Metadata>
           <h2 className="productsHeading">Products</h2>
           <div className="container">
             <div className="products">
@@ -145,5 +145,6 @@ const Products = ({ match }) => {
     </Fragment>
   );
 };
+
 
 export default Products;
