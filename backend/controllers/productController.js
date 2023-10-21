@@ -23,7 +23,7 @@ exports.getAllProducts =catchAsyncErrors((async(req, res, next) => {
     
     //return  next(new ErrorHander("This is tempoary errorHander",500));
 
-    const resultPerPage=10;
+    const resultPerPage=8;
     const productsCount= await Product.countDocuments();
 
     const apiFeature = new ApiFeatures(Product.find(), req.query)
@@ -37,6 +37,7 @@ exports.getAllProducts =catchAsyncErrors((async(req, res, next) => {
       success: true,
       products,
       productsCount,
+      resultPerPage,
     });
   }));
 
