@@ -8,7 +8,7 @@ import Home from "./component/Home/Home.js"
 import ProductDetails from "./component/product/productDetails.js"
 import Products from "./component/product/Products"
 import Search from "./component/product/Search.js"
-
+import LoginSignUp from "./component/User/LoginSignUp"
 function App() {
   useEffect(() => {
     WebFont.load({
@@ -31,6 +31,8 @@ function App() {
           <Route path="/products" element={<Products/>}/>
           <Route path="/products/:keyword" element={<Products/>}/>
           <Route path="/search" element={<Search/>}/>
+
+          <Route path="/login" element ={<LoginSignUp/>}></Route>
         </Routes>
         <Footer />
     </BrowserRouter>
