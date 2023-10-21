@@ -1,100 +1,117 @@
 .productsHeading {
-    margin: 2vmax auto;
-    width: 15vw;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-    padding: 2vmax;
-    color: rgba(0, 0, 0, 0.678);
-    font-weight: 500;
-    font-size: 1.5vmax;
-    font-family: "Roboto", sans-serif;
-    text-align: center;
+  margin: 2vmax auto;
+  width: 15vw;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  padding: 2vmax;
+  color: rgba(0, 0, 0, 0.678);
+  font-weight: 500;
+  font-size: 1.5vmax;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
 }
+
 
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 5vmax;
-    justify-content: center;
+  width: 70%;
+  display: flex;
+  padding: 0 5vmax;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+.filterBox {
+  width: 30%;
+  padding: 0 2vmax;
+}
 
 .paginationBox {
-    display: flex;
-    justify-content: center;
-    margin: 6vmax;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    padding: 0;
-  }
-  
-  .page-item {
-    background-color: rgb(255, 255, 255);
-    list-style: none;
-    border: 1px solid rgba(0, 0, 0, 0.178);
-    padding: 1vmax 1.5vmax;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .page-item:first-child {
-    border-radius: 5px 0 0 5px;
-  }
-  
-  .page-item:last-child {
-    border-radius: 0 5px 5px 0;
-  }
-  .page-link {
-    text-decoration: none;
-    font: 300 0.7vmax "Roboto";
-    color: rgb(80, 80, 80);
-    transition: all 0.3s;
-  }
-  
-  .pageItemActive{
-    background-color: rgb(251, 38, 1);
-  }
+  display: flex;
+  justify-content: center;
+  margin: 6vmax;
+}
 
-  .pageLinkActive{
-    color: white;
-  }
-  .page-item:hover {
-    background-color: rgb(230, 230, 230);
-  }
-  
-  .page-item:hover .page-link {
-    color: rgb(0, 0, 0);
-  }
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
 
-  /* .filterBox{
-    width: 10vmax;
-    position: absolute;
-    top: 10vmax;
-    left: 2vmax;
-  } */
+.page-item {
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+  padding: 1vmax 1.5vmax;
+  transition: all 0.3s;
+  cursor: pointer;
+}
 
+.page-item:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.page-item:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.page-link {
+  text-decoration: none;
+  font: 300 0.7vmax "Roboto";
+  color: rgb(80, 80, 80);
+  transition: all 0.3s;
+}
+
+.pageItemActive {
+  background-color: rgb(251, 38, 1);
+}
+
+.pageLinkActive {
+  color: white;
+}
+
+.page-item:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.page-item:hover .page-link {
+  color: rgb(0, 0, 0);
+}
+
+.filterBox {
+  width: 150px;
+  position: absolute;
+  top: 10vmax;
+  left: 3vmax;
+}
+
+.category-link {
+  list-style: none;
+  color: rgba(0, 0, 0, 0.61);
+  font: 400 0.8vmax "Roboto";
+  margin: 0.4vmax;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.category-link:hover {
+  color: tomato;
+}
+
+.categoryBox {
+  padding: 0%;
+}
+
+.filterBox > fieldset {
+  border: 1px solid rgba(0, 0, 0, 0.811);
+}
+
+@media screen and (max-width: 600px) {
   .filterBox {
-    width: 150px; /* You can adjust the width as needed */
-    position: absolute;
-    top: 10vmax; /* You can adjust the top position as needed */
-    left: 3vmax; /* You can adjust the left position as needed */
-  }
-  
-
-
-  .category-link {
-    list-style: none;
-    color: rgba(0, 0, 0, 0.61);
-    font: 400 0.8vmax "Roboto";
-    margin: 0.4vmax;
-    cursor: pointer;
-    transition: all 0.5s;
-  }
-  .category-link:hover {
-    color: tomato;
+    width: 20vmax;
+    position: static;
+    margin: auto;
   }
 
-  .categoryBox{
-    padding: 0%;
+  .page-link {
+    font: 300 1.7vmax "Roboto";
   }
+}
