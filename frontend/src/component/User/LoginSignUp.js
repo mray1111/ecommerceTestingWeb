@@ -1,10 +1,21 @@
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useRef, useState,useEffect} from "react";
 import "./LoginSignUp.css";
 import HttpsIcon from "@mui/icons-material/Https";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import MailLockIcon from "@mui/icons-material/MailLock";
+import {useAlert} from "react-alert"
+import {useDispatch, useSelector} from "react-redux"
+import { clearErrors, login } from "../../actions/userAction";
+import Loader from "../layout/loader/Loader";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignUp = () => {
+
+  const dispatch=useDispatch();
+  const alert=useAlert();
+
+  const {error, loading, isAuthenticated}=useSelector((state)=>state.user);
+
   const loginTab = useRef(null);
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
@@ -21,9 +32,11 @@ const LoginSignUp = () => {
   const [avatarPreview, setAvatarPreview] = useState("/Profile.png");
   const { name, email, password } = user;
 
-  const loginSubmit = () => {
-    console.log("Login Form Submitted");
+  const loginSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login(loginEmail, loginPassword)); // Dispatch the login action with email and password
   };
+  
 
   const registerSubmit = (e) => {
     e.preventDefault();
@@ -54,6 +67,19 @@ const LoginSignUp = () => {
     }
   };
 
+  const navigate=useNavigate();
+  
+  useEffect(()=>{
+    if(error){
+      alert.error(error);
+      dispatch(clearErrors());
+    }
+
+    if(isAuthenticated){
+
+      navigate("/account")
+    }
+  })
   const switchTabs = (e, tab) => {
     if (tab === "login") {
       switcherTab.current.classList.add("shiftToNeutral");
@@ -72,7 +98,9 @@ const LoginSignUp = () => {
   };
 
   return (
-    <Fragment>
+   <Fragment>
+     {loading ? <Loader/> :
+      <Fragment>
       <div className="LoginSignUpContainer">
         <div className="LoginSignUpBox">
           <div>
@@ -163,6 +191,9 @@ const LoginSignUp = () => {
           </div>
         </div>
     </Fragment>
+     
+     }
+   </Fragment>
   );
 };
 

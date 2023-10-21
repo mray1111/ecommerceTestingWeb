@@ -1,24 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { applyMiddleware, combineReducers, configureStore, legacy_createStore as createStore } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { productDetailsReducer, productReducer } from "./reducers/productReducer";
-
+import { userReducer } from "./reducers/userReducer";
 
 // Define a dummy reducer or import your actual reducers here
-
+const reducer=combineReducers({
+  products:productReducer,
+  productDetails:productDetailsReducer,
+  user:userReducer
+});
 
 const initialState = {};
 
-const store = configureStore({
-  reducer: {
-    // Add your actual reducers here when you have them
-    // For now, you can include the dummyReducer
-    products: productReducer,
-    productDetails:productDetailsReducer
-  },
-  preloadedState: initialState,
-  middleware: [thunk],
-  devTools: composeWithDevTools(),
-});
+const middleware=[thunk];
+const store = createStore(
+  reducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+)
 
 export default store;
