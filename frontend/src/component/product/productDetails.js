@@ -3,18 +3,27 @@ import Carousel from "react-material-ui-carousel";
 import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { getProductDetails } from "../../actions/productActions";
+import { clearErrors, getProductDetails } from "../../actions/productActions";
 import "./ProductDetails.css";
-
+import ReviewCard from "./ReviewCard.js" ;
+import  Loader  from "../layout/loader/Loader"
+import {useAlert} from "react-alert";
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const alert = useAlert() ;
+
   const { product, loading, error } = useSelector((state) => state.productDetails);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
+
+    if(error){
+      alert.error(error)
+      dispatch(clearErrors)
+    }
     dispatch(getProductDetails(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, error, alert]);
 
   const options = {
     edit: false,
@@ -44,13 +53,16 @@ const ProductDetails = () => {
 
   return (
     <Fragment>
+  {loading ? <Loader/> : 
+
+    (<Fragment>
       <div className="ProductDetails">
         <div className="ProductDetails-left">
           <Carousel>
             {product.images &&
               product.images.map((item, i) => (
                 <img
-                  className="CarouselImage"
+                  className="CarouselImage" // Applied the new class
                   key={i}
                   src={item.url}
                   alt={`${i} Slide`}
@@ -63,6 +75,7 @@ const ProductDetails = () => {
           <div className="detailsBlock-1">
             <h2>{product.name}</h2>
             <p>Product # {product._id}</p>
+
           </div>
 
           <div className="detailsBlock-2">
@@ -100,8 +113,29 @@ const ProductDetails = () => {
           </button>
         </div>
       </div>
-    </Fragment>
+<h3 className="reviewsHeading">REVIEWS</h3>
+
+{product.reviews && product.reviews[0] ? (
+  <div className="reviews">
+    {product.reviews && 
+    
+    product.reviews.map((review) => <ReviewCard review= {review}/>)
+    }
+  </div>
+):
+(
+  <p className="noReviews">No Reviews Yet</p>
+)}
+
+
+
+    </Fragment>)
+  
+  }
+
+      </Fragment>
   );
 };
+
 
 export default ProductDetails;
