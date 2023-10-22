@@ -76,7 +76,7 @@ const Products = ({ match }) => {
                 ))}
             </div>
 
-              {keyword && 
+              {
 
                         <div className="filterBox">
                         <Typography>Price</Typography>

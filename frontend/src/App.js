@@ -9,11 +9,17 @@ import ProductDetails from "./component/product/productDetails.js"
 import Products from "./component/product/Products"
 import Search from "./component/product/Search.js"
 import LoginSignUp from "./component/User/LoginSignUp";
-
+import UserOptions from "./component/layout/Header/UserOptions";
 import store from "./store";
 import { loadUser } from './actions/userAction';
+import { useSelector } from 'react-redux';
+
+
 
 function App() {
+
+  const {isAuthenticated, user}=useSelector((state)=>state.user);
+  
   useEffect(() => {
     WebFont.load({
       google: {
@@ -21,7 +27,7 @@ function App() {
       },
     });
 
-    store.dispatch(loadUser)
+    store.dispatch(loadUser())
   }, []);
 
 
@@ -31,16 +37,17 @@ function App() {
      
   <BrowserRouter>
       <Header/>
+         {isAuthenticated && <UserOptions user ={user}/>}
         <Routes>
-          <Route path="/" element={<Home />} />
-          
-          <Route path="/product/:id" element={<ProductDetails/>} />
 
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:id" element={<ProductDetails/>} />
           <Route path="/products" element={<Products/>}/>
           <Route path="/products/:keyword" element={<Products/>}/>
           <Route path="/search" element={<Search/>}/>
-
           <Route path="/login" element ={<LoginSignUp/>}></Route>
+          <Route path="/me" element={<UserOptions user={user} />} />
+       
         </Routes>
         <Footer />
     </BrowserRouter>
