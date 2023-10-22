@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { CgDatabase, CgMouse } from "react-icons/cg"; 
+import {CgMouse } from "react-icons/cg"; 
 import "./Home.css";
 import Product from "./ProductCard";
 import MetaData from "../layout/Metadata.js";
@@ -7,7 +7,6 @@ import {clearErrors, getProduct} from "../../actions/productActions"
 import {useSelector, useDispatch} from "react-redux";
 import Loader from "../layout/loader/Loader";
 import { useAlert } from "react-alert";
-import {FaYoutube} from 'react-icons/fa'
  import {TbShoppingCartSearch} from "react-icons/tb"
  import {VscAccount}  from "react-icons/vsc"
 const product = {
