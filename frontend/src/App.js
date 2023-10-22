@@ -8,7 +8,11 @@ import Home from "./component/Home/Home.js"
 import ProductDetails from "./component/product/productDetails.js"
 import Products from "./component/product/Products"
 import Search from "./component/product/Search.js"
-import LoginSignUp from "./component/User/LoginSignUp"
+import LoginSignUp from "./component/User/LoginSignUp";
+
+import store from "./store";
+import { loadUser } from './actions/userAction';
+
 function App() {
   useEffect(() => {
     WebFont.load({
@@ -16,7 +20,11 @@ function App() {
         families: ["Roboto", "Droid Sans", "Chilanka"],
       },
     });
+
+    store.dispatch(loadUser)
   }, []);
+
+
 
   return (
       
