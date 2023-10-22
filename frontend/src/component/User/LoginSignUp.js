@@ -5,7 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import MailLockIcon from "@mui/icons-material/MailLock";
 import {useAlert} from "react-alert"
 import {useDispatch, useSelector} from "react-redux"
-import { clearErrors, login } from "../../actions/userAction";
+import { clearErrors, login,register } from "../../actions/userAction";
 import Loader from "../layout/loader/Loader";
 import { useNavigate } from "react-router-dom";
 
@@ -47,7 +47,7 @@ const LoginSignUp = () => {
     myForm.set("email", email);
     myForm.set("password", password);
     myForm.set("avatar", avatar);
-    console.log("Register Form Submitted ");
+    dispatch(register(myForm))
   };
 
   const registerDataChange = (e) => {
@@ -79,7 +79,9 @@ const LoginSignUp = () => {
 
       navigate("/account")
     }
-  })
+
+
+  },[dispatch,error,alert,isAuthenticated,navigate])
   const switchTabs = (e, tab) => {
     if (tab === "login") {
       switcherTab.current.classList.add("shiftToNeutral");
