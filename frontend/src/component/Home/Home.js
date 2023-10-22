@@ -8,7 +8,8 @@ import {useSelector, useDispatch} from "react-redux";
 import Loader from "../layout/loader/Loader";
 import { useAlert } from "react-alert";
 import {FaYoutube} from 'react-icons/fa'
-
+ import {TbShoppingCartSearch} from "react-icons/tb"
+ import {VscAccount}  from "react-icons/vsc"
 const product = {
   name: "Blue T-shirt",
   images: [{ url: "http://i.ibb.co/DRST11n/1.webp" }],
@@ -42,9 +43,15 @@ const Home = () => {
           <MetaData title="DBMS Manish and Purushottam" />
           <div className="banner">
             <p>Welcome to Ecommerce</p>
-            <a href="http://localhost:3000/Search">
-              <FaYoutube />
-            </a>
+            <div className="flex-container">
+  <a href="http://localhost:3000/Search">
+    <TbShoppingCartSearch className="Larger" />
+  </a>
+  <a href="http://localhost:3000/account">
+    <VscAccount className="Larger_acc" />
+  </a>
+</div>
+
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
 
             <a href="#container">

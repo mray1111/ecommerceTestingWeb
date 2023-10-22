@@ -129,3 +129,21 @@
     justify-content:right;
     /* max-width: 100%; */
   }
+
+
+  .Larger{
+    font-size: 2rem;
+    color: #fff;
+  }
+  .Larger_acc{
+    font-size: 2rem;
+    color: #fff;
+  }
+
+  .flex-container {
+    margin-top: 12px;
+    display: flex;
+    align-items: center; /* Optional: To vertically align the items in the center */
+    justify-content: space-between; /* This adds space between the items */
+    gap: 70px; /* Adjust the gap size as needed */
+  }
