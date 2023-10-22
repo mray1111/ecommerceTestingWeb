@@ -15,7 +15,7 @@ import { loadUser } from './actions/userAction';
 import { useSelector } from 'react-redux';
 import Profile from "./component/User/Profile.js"
 import ProtectedRoute from './component/Route/ProtectedRoute';
-
+import UpdateProfile from "./component/User/UpdateProfile"
 
 function App() {
 
@@ -48,6 +48,7 @@ function App() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/login" element ={<LoginSignUp/>}></Route>
           <Route path="/account" element ={<Profile/>}></Route>
+          <Route path="/me/update" element ={<UpdateProfile/>}></Route>
 
 
         </Routes>
