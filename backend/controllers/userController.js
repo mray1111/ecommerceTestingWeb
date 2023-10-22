@@ -191,9 +191,15 @@ exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
 
   // console.log(req.body.newPassword);
   // console.log(req.body.confirmPassword);
+
   if (req.body.newPassword !== req.body.confirmPassword) {
     return next(new ErrorHander("password does not match", 400));
   }
+  if (req.body.newPassword.length < 8) {
+    return next(new ErrorHander("Password must be at least 8 characters long", 400));
+  }
+
+
   user.password = req.body.newPassword;
   await user.save();
   sendToken(user, 200, res);
