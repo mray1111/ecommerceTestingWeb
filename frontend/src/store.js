@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { productDetailsReducer, productReducer } from "./reducers/productReducer";
 import { forgotPasswordReducer, profileReducer, userReducer } from "./reducers/userReducer";
-
+import { cartReducer } from "./reducers/cartReducer";
 // Define a dummy reducer or import your actual reducers here
 const reducer=combineReducers({
   products:productReducer,
@@ -11,10 +11,19 @@ const reducer=combineReducers({
   user:userReducer,
   profile:profileReducer,
   forgotPassword:forgotPasswordReducer,
-  
+  cart:cartReducer
 });
 
-const initialState = {};
+let initialState = {
+  cart: {
+    cartItems: localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [],
+    shippingInfo: localStorage.getItem("shippingInfo")
+      ? JSON.parse(localStorage.getItem("shippingInfo"))
+      : {},
+  },
+};
 
 const middleware=[thunk];
 const store = createStore(

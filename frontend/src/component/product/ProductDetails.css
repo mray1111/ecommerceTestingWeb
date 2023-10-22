@@ -39,15 +39,16 @@
 
 /* Product name and ID */
 .detailsBlock-1 h2 {
-  font-size: 24px;
-  color: #333;
+  font-size: 40px;
+  color: #5c0b0f;
   margin: 10px 0;
 }
 
 .detailsBlock-1 p {
-  font-size: 18px;
-  color: #555;
+  font-size: 12px;
+  color: #d21414;
   margin: 5px 0;
+  
 }
 
 /* Rating stars and number of reviews */
@@ -59,22 +60,25 @@
 
 .detailsBlock-2-span {
   font-size: 18px;
-  color: #ff6b6b; /* Pink color for the number of reviews */
+  color: #cd14b7; /* Pink color for the number of reviews */
   margin-left: 5px;
 }
 
 /* Product price and quantity controls */
 detailsBlock-3 h1 {
   font-size: 24px;
-  color: tomato;
+  color: rgb(18, 197, 15);
   margin-top: 20px;
 }
 
-detailsBlock-3-1 {
+.detailsBlock-3-1 {
   display: flex;
-  align-items: center;
-  margin-top: 10px;
+  color: blue;
+  align-items:flex-start;
+  flex-direction: column; /* Added to stack "Add to Cart" and "Status: InStock" vertically */
+  margin-top: 2vmax; /* Add space above "Add to Cart" */
 }
+
 
 detailsBlock-3-1-1 {
   display: flex;
@@ -88,7 +92,7 @@ detailsBlock-3-1-1 button {
   cursor: pointer;
   margin: 0 10px;
   padding: 0;
-  color: #ff6b6b; /* Pink color for quantity control buttons */
+  color: #320b9d; /* Pink color for quantity control buttons */
   transition: color 0.3s ease-in-out;
 }
 
@@ -100,8 +104,9 @@ detailsBlock-3-1-1 input {
   font-size: 16px;
   padding: 5px;
   width: 40px;
+  margin-top: 30px;
   text-align: center;
-  border: 1px solid #531d26;
+  border: 1px solid #e40aa3;
   border-radius: 5px;
   outline: none;
 }
@@ -119,7 +124,7 @@ detailsBlock-3-1-1 input[type="number"] {
 detailsBlock-3-1 button {
   font-size: 18px;
   padding: 10px 20px;
-  background-color: #006400; /* Green color for "Add to Cart" button */
+  background-color: #106910; /* Green color for "Add to Cart" button */
   color: #e9c6cc;
   border: none;
   cursor: pointer;
@@ -142,7 +147,7 @@ detailsBlock-3-1 button:hover {
   width: 60%;
   margin: 30px 0;
   background-color: #006400; /* Green color for the "Submit Review" button */
-  color: #e9c6cc;
+  color: #c61331;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -150,12 +155,12 @@ detailsBlock-3-1 button:hover {
 }
 
 .submitReview:hover {
-  background-color: #FFD700; /* Deep yellow on hover for the "Submit Review" button */
+  background-color: #bca317; /* Deep yellow on hover for the "Submit Review" button */
   transform: scale(1.1);
 }
 
 .reviewsHeading {
-  color: #000000be;
+  color: #d71010be;
   font: 500 1.4vmax "Roboto";
   text-align: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.226);
@@ -242,54 +247,100 @@ detailsBlock-3-1 button:hover {
     font-size: 20px;
   }
 
-  detailsBlock-3 h1 {
-    font-size: 36px;
-    text-align: center;
+  .detailsBlock-3 {
+    width: 70%;
+    color: red;
   }
-
+  
+  .detailsBlock-3 > h1 {
+    font: 400 1.8vmax "Franklin Gothic Medium";
+    margin: 1vmax 0;
+    color: red;
+  }
+  
   .detailsBlock-3-1 {
-    flex-direction: column;
+    display: flex;
+    align-items: center;
+    color: yellow;
+    flex-direction: column; /* Added to stack "Add to Cart" and "Status: InStock" vertically */
   }
-
-  .detailsBlock-3-1-1 {
-    padding: 20px 0;
+  
+  detailsBlock-3-1-1 {
+    display: flex;
+    align-items: center;
   }
-
-  .detailsBlock-3-1-1 > button:last-child {
+  
+  detailsBlock-3-1-1 button {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.616);
+    padding: 0.5vmax;
+    cursor: pointer;
+    color: rgb(233, 11, 11);
+    transition: all 0.5s;
+  }
+  
+  detailsBlock-3-1-1 button:hover {
+    background-color: rgba(215, 15, 15, 0.767);
+  }
+  
+  detailsBlock-3-1-1 input {
+    border: none;
+    padding: 0.5vmax;
+    width: 1vmax;
+    text-align: center;
+    outline: none;
+    font: 400 0.8vmax "Roboto";
+    color: rgba(147, 220, 9, 0.74);
+  }
+  
+  detailsBlock-3-1-1 button:last-child {
     border: none;
     cursor: pointer;
-    color: white;
+    color: rgb(200, 12, 12);
     transition: all 0.5s;
     background-color: tomato;
     font: 500 0.7vmax "Roboto";
     border-radius: 20px;
-    padding: 0.6vmax 2vmax;
-    margin: 1vmax;
+    padding: 0.5vmax 2vmax;
+    margin: 1vmax 0;
     outline: none;
   }
-
-  .detailsBlock-3-1-1 > button:last-child:hover {
-    background-color: #FFD700; /* Deep yellow on hover for the last quantity control button */
+  
+  detailsBlock-3-1-1 button:last-child:hover {
+    background-color: rgb(218, 49, 19);
   }
-
-  .detailsBlock-3-1-1 input {
-    padding: 15px;
-    width: 60px;
-    font-size: 24px;
+  
+  detailsBlock-3-1-1 input[type="number"]::-webkit-inner-spin-button,
+  detailsBlock-3-1-1 input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    color: red;
+    margin: 0;
   }
-
-  .detailsBlock-3-1 button:last-child {
-    font-size: 22px;
-    padding: 15px;
-    width: 60%;
-    margin: 30px 0;
+  
+  detailsBlock-3-1-1 input[type="number"] {
+    -moz-appearance: textfield;
   }
-
-  .detailsBlock-3 p {
-    padding: 30px 0;
-    text-align: center;
-    font-size: 32px;
+  
+  detailsBlock-3-1 button {
+    font: 500 0.7vmax "Roboto";
+    border-radius: 20px;
+    color: red;
+    padding: 0.6vmax 2vmax;
+    margin: 1rem 0; /* Added margin-top for spacing */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
   }
+  
+  detailsBlock-3-1 button:disabled {
+    background-color: #a10c0c;
+    cursor: not-allowed;
+  }
+  
+  detailsBlock-3-1 button:hover {
+    background-color: #FFD700; /* Deep yellow on hover for "Add to Cart" button */
+  }
+  
 
   .detailsBlock-4 {
     font-size: 36px;

@@ -6,22 +6,28 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, getProductDetails } from "../../actions/productActions";
 import "./ProductDetails.css";
 import ReviewCard from "./ReviewCard.js" ;
-import  Loader  from "../layout/loader/Loader"
-import {useAlert} from "react-alert";
+import Loader from "../layout/loader/Loader";
+import { useAlert } from "react-alert";
 import Metadata from "../layout/Metadata";
+import { addItemsToCart } from "../../actions/cartAction";
+
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const alert = useAlert() ;
+  const alert = useAlert();
 
   const { product, loading, error } = useSelector((state) => state.productDetails);
   const [quantity, setQuantity] = useState(1);
 
-  useEffect(() => {
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    alert.success("Item Added To Cart");
+  };
 
-    if(error){
-      alert.error(error)
-      dispatch(clearErrors)
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors);
     }
     dispatch(getProductDetails(id));
   }, [dispatch, id, error, alert]);
@@ -47,97 +53,82 @@ const ProductDetails = () => {
     setQuantity(qty);
   };
 
-  // Define the function for submitting reviews
-  const submitReviewToggle = () => {
-    // Implement your logic for submitting reviews
-  };
-
   return (
     <Fragment>
-  {loading ? <Loader/> : 
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
+          <Metadata title={`${product.name} --- Ecommerce`} />
+          <div className="ProductDetails">
+            <div className="ProductDetails-left">
+              <Carousel>
+                {product.images &&
+                  product.images.map((item, i) => (
+                    <img
+                      className="CarouselImage"
+                      key={i}
+                      src={item.url}
+                      alt={`${i} Slide`}
+                    />
+                  ))}
+              </Carousel>
+            </div>
 
-    (<Fragment>
-      <Metadata title={`${product.name}    --- Ecommerce`}></Metadata>
-      <div className="ProductDetails">
-        <div className="ProductDetails-left">
-          <Carousel>
-            {product.images &&
-              product.images.map((item, i) => (
-                <img
-                  className="CarouselImage" // Applied the new class
-                  key={i}
-                  src={item.url}
-                  alt={`${i} Slide`}
-                />
-              ))}
-          </Carousel>
-        </div>
-
-        <div className="ProductDetails-right">
-          <div className="detailsBlock-1">
-            <h2>{product.name}</h2>
-            <p>Product # {product._id}</p>
-
-          </div>
-
-          <div className="detailsBlock-2">
-            <ReactStars {...options} />
-            <span className="detailsBlock-2-span">
-              {" "}
-              ({product.numOfReviews} Reviews)
-            </span>
-          </div>
-
-          <div className="detailsBlock-3">
-            <h1>₹{product.price}</h1>
-            <div className="detailsBlock-3-1">
-              <div className="detailsBlock-3-1-1">
-                <button onClick={decreaseQuantity}>-</button>
-                <input readOnly type="number" value={quantity} />
-                <button onClick={increaseQuantity}>+</button>
+            <div className="ProductDetails-right">
+              <div className="detailsBlock-1">
+                <h2>{product.name}</h2>
+                <p>Product # {product._id}</p>
               </div>
-              <button onClick={submitReviewToggle}>Add to Cart</button>
-              <p>
-                Status:
-                <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                  {product.Stock < 1 ? "OutOfStock" : "InStock"}
-                </b>
-              </p>
+
+              <div className="detailsBlock-2">
+                <ReactStars {...options} />
+                <span className="detailsBlock-2-span">
+                  {" "}
+                  ({product.numOfReviews} Reviews)
+                </span>
+              </div>
+
+              <div className="detailsBlock-3">
+                <h1>₹{product.price}</h1>
+                <div className="detailsBlock-3-1">
+                  <div className="detailsBlock-3-1-1">
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input readOnly type="number" value={quantity} />
+                    <button onClick={increaseQuantity}>+</button>
+                  </div>
+                  <button onClick={addToCartHandler}>Add to Cart</button>
+                  <p>
+                    Status:
+                    <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
+                      {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                    </b>
+                  </p>
+                </div>
+              </div>
+
+              <div className="detailsBlock-4">
+                Description : <p>{product.description}</p>
+              </div>
             </div>
           </div>
 
-          <div className="detailsBlock-4">
-            Description : <p>{product.description}</p>
-          </div>
+          <h3 className="reviewsHeading">REVIEWS</h3>
 
-          <button onClick={submitReviewToggle} className="submitReview">
-            Submit Review
-          </button>
-        </div>
-      </div>
-<h3 className="reviewsHeading">REVIEWS</h3>
-
-{product.reviews && product.reviews[0] ? (
-  <div className="reviews">
-    {product.reviews && 
-    
-    product.reviews.map((review) => <ReviewCard review= {review}/>)
-    }
-  </div>
-):
-(
-  <p className="noReviews">No Reviews Yet</p>
-)}
-
-
-
-    </Fragment>)
-  
-  }
-
-      </Fragment>
+          {product.reviews && product.reviews[0] ? (
+            <div className="reviews">
+              {product.reviews &&
+                product.reviews.map((review) => (
+                  <ReviewCard review={review} key={review._id} />
+                ))}
+            </div>
+          ) : (
+            <p className="noReviews">No Reviews Yet</p>
+          )}
+        </Fragment>
+      )}
+    </Fragment>
   );
 };
-
 
 export default ProductDetails;
