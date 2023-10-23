@@ -20,7 +20,8 @@ import UpdatePassword from "./component/User/UpdatePassword"
 import ForgotPassword from "./component/User/ForgotPassword.js"
 import ResetPassword from "./component/User/ResetPassword.js"
 import Cart from "./component/Cart/Cart";
-
+import Shipping from "./component/Cart/Shipping"
+import ConfirmOrder from './component/Cart/ConfirmOrder';
 
 
 
@@ -60,6 +61,8 @@ function App() {
           <Route path="/password/forgot" element ={<ForgotPassword/>}></Route>
           <Route path="/password/reset/:token" element ={<ResetPassword/>}></Route>
           <Route path="/cart" element ={<Cart/>}></Route>
+          <Route path="/shipping" element ={<Shipping/>}></Route>
+          <Route path="/order/confirm" element ={<ConfirmOrder/>}></Route>
         </Routes>
         <Footer />
     </BrowserRouter>
