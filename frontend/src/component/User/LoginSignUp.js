@@ -1,7 +1,7 @@
 import React, { Fragment, useRef, useState, useEffect } from "react";
 import "./LoginSignUp.css";
 import HttpsIcon from "@mui/icons-material/Https";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import MailLockIcon from "@mui/icons-material/MailLock";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,8 +64,12 @@ const LoginSignUp = () => {
     }
   };
 
-  const navigate = useNavigate();
 
+
+  const navigate = useNavigate();
+  
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const redirect = urlSearchParams.get("redirect") || "/account";
   useEffect(() => {
     if (error) {
       alert.error(error);
@@ -73,8 +77,7 @@ const LoginSignUp = () => {
     }
 
     if (isAuthenticated) {
-      // Navigate to the shipping page or any other desired route
-      navigate("/shipping");
+      navigate(redirect);
     }
   }, [dispatch, error, alert, isAuthenticated, navigate]);
 

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useRef } from "react";
 import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import MetaData from "../layout/Metadata";
 import { Typography, Button } from "@mui/material";
 import { useAlert } from "react-alert";
@@ -16,9 +16,12 @@ import axios from "axios";
 import "./Payment.css";
 import { FaCreditCard, FaCalendar, FaKey } from "react-icons/fa"; // Import Fa icons from react-icons
 import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
+import { createOrder, clearErrors } from "../../actions/orderAction";
 
 const Payment = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const alert = useAlert();
 
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
 
@@ -28,10 +31,22 @@ const Payment = () => {
 
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
+  const {error}= useSelector((state)=>state.newOrder);
 
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
   };
+
+
+  const order = {
+    shippingInfo,
+    orderItems: cartItems,
+    itemsPrice: orderInfo.subtotal,
+    taxPrice: orderInfo.tax,
+    shippingPrice: orderInfo.shippingCharges,
+    totalPrice: orderInfo.totalPrice,
+  };
+
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -76,7 +91,11 @@ const Payment = () => {
         alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
-          // Handle success or redirect to a success page
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+          dispatch(createOrder(order));
           navigate("/success");
         } else {
           alert.error("There's some issue while processing payment ");
@@ -89,8 +108,11 @@ const Payment = () => {
   };
 
   useEffect(() => {
-    // Handle any additional logic or cleanup if needed
-  }, []);
+    if(error){
+      alert.error(error);
+      dispatchEvent(clearErrors())
+    }
+  }, [dispatch, error, alert]);
 
   return (
     <Fragment>

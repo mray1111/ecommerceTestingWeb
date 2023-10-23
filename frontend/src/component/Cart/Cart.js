@@ -6,6 +6,7 @@ import { addItemsToCart, removeItemsFromCart } from "../../actions/cartAction";
 import { GoTypography} from "react-icons/go";
 import { TbGardenCartOff } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 // Define a custom GoTypography component
 
@@ -14,7 +15,9 @@ import { Link, useNavigate } from "react-router-dom";
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const alert=useAlert();
   const { cartItems } = useSelector((state) => state.cart);
+  const {isAuthenticated } = useSelector((state) => state.user);
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -39,8 +42,21 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    navigate("/login?redirect=shipping");
+    if (isAuthenticated) {
+      navigate("/shipping");
+    } else {
+      // Display an alert and provide a link to the login page
+      alert.error("Please go to the login page You are Not Authenticated  User", {
+        onClose: () => {
+          navigate("/login");
+        },
+      });
+    }
   };
+
+
+
+
 
   return (
     <Fragment>
