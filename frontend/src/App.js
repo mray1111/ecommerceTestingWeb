@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "./component/layout/Header/Header.js"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WebFont from 'webfontloader';
@@ -22,24 +22,30 @@ import ResetPassword from "./component/User/ResetPassword.js"
 import Cart from "./component/Cart/Cart";
 import Shipping from "./component/Cart/Shipping"
 import ConfirmOrder from './component/Cart/ConfirmOrder';
-
-
+import Payment from "./component/Cart/Payment"
+import axios from "axios";
+import {Elements} from "@stripe/react-stripe-js"
+import {loadStripe} from "@stripe/stripe-js"
 
 function App() {
+  const { isAuthenticated, user } = useSelector((state) => state.user);
+  const [stripeApiKey, setStripeApiKey] = useState(''); // Corrected the declaration
 
-  const {isAuthenticated, user}=useSelector((state)=>state.user);
-  
+  async function getStripeApiKey() {
+    const { data } = await axios.get('/api/v1/stripeapikey');
+    setStripeApiKey(data.stripeApiKey);
+  }
+
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
+        families: ['Roboto', 'Droid Sans', 'Chilanka'],
       },
     });
 
-    store.dispatch(loadUser())
+    store.dispatch(loadUser());
+    getStripeApiKey();
   }, []);
-
-
 
   return (
       
@@ -63,6 +69,14 @@ function App() {
           <Route path="/cart" element ={<Cart/>}></Route>
           <Route path="/shipping" element ={<Shipping/>}></Route>
           <Route path="/order/confirm" element ={<ConfirmOrder/>}></Route>
+          <Route path="/process/payment" element={
+            <Elements stripe={loadStripe(stripeApiKey)}>
+              <Payment />
+            </Elements>
+          }
+        />
+          
+          
         </Routes>
         <Footer />
     </BrowserRouter>
