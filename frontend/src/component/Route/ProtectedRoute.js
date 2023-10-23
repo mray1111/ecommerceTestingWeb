@@ -1,34 +1,27 @@
-// import React, { Fragment } from "react";
-// import { useSelector } from "react-redux";
-// import { Route } from "react-router-dom";
-// import { useNavigate } from 'react-router-dom';
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { Route, Navigate } from "react-router-dom"; // Import the Navigate component
 
-// const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
-//   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
-//   const navigate = useNavigate();
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 
-//   return (
-//     <Fragment>
-//       {loading === false && (
-//         <Route
-//           {...rest}
-//           render={(props) => {
-//             if (isAuthenticated === false) {
-//               navigate("/login");
-//               return null; // Return null or any placeholder while navigating
-//             }
+  return (
+    <Fragment>
+      {!loading && (
+        <Route
+          {...rest}
+          render={(props) => {
+            if (isAuthenticated === false) {
+              // Use the Navigate component to redirect to the login page
+              return <Navigate to="/login" />;
+            }
+            return <Component {...props} />;
+          }}
+        />
+      )}
+      
+    </Fragment>
+  );
+};
 
-//             if (isAdmin && user && user.role !== "admin") {
-//               navigate("/login");
-//               return null; // Return null or any placeholder while navigating
-//             }
-
-//             return <Component {...props} />;
-//           }}
-//         />
-//       )}
-//     </Fragment>
-//   );
-// };
-
-// export default ProtectedRoute;
+export default ProtectedRoute;
