@@ -7,8 +7,11 @@ import {clearErrors, getProduct} from "../../actions/productActions"
 import {useSelector, useDispatch} from "react-redux";
 import Loader from "../layout/loader/Loader";
 import { useAlert } from "react-alert";
- import {TbShoppingCartSearch} from "react-icons/tb"
- import {VscAccount}  from "react-icons/vsc"
+
+import {VscAccount}  from "react-icons/vsc"
+import {BsFillCartPlusFill} from  "react-icons/bs"
+import {ImSearch} from "react-icons/im"
+
 const product = {
   name: "Blue T-shirt",
   images: [{ url: "http://i.ibb.co/DRST11n/1.webp" }],
@@ -43,12 +46,15 @@ const Home = () => {
           <div className="banner">
             <p>Welcome to Ecommerce</p>
             <div className="flex-container">
-  <a href="http://localhost:3000/Search">
-    <TbShoppingCartSearch className="Larger" />
-  </a>
-  <a href="http://localhost:3000/account">
-    <VscAccount className="Larger_acc" />
-  </a>
+        <a href="http://localhost:3000/account">
+          <VscAccount className="Larger_acc" />
+        </a>
+        <a href="http://localhost:3000/cart">
+          <BsFillCartPlusFill className="Larger" />
+        </a>
+        <a href="http://localhost:3000/Search">
+          <ImSearch className="Larger" />
+        </a>
 </div>
 
             <h1>FIND AMAZING PRODUCTS BELOW</h1>
