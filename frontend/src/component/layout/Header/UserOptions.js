@@ -9,8 +9,9 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from "react-alert";
-import {useDispatch} from "react-redux"
+import {useDispatch,useSelector} from "react-redux"
 import {logout} from "../../../actions/userAction"
+import {BsFillCartPlusFill} from  "react-icons/bs"
 
 
 
@@ -20,6 +21,8 @@ import {logout} from "../../../actions/userAction"
 
 
 const UserOptions = ({ user }) => {
+  
+  const {cartItems} = useSelector((state) => state.cart) ;
   const [open,setOpen]= useState(false) ;
   const navigate = useNavigate();
   const alert = useAlert();
@@ -28,6 +31,13 @@ const UserOptions = ({ user }) => {
  const options = [
     { icon: <ListAltIcon />, name: "Orders", func: orders },
     { icon: <PersonIcon />, name: "Profile", func: account },
+
+    {
+      icon : <BsFillCartPlusFill style={{color : cartItems.length > 0 ? "tomato" :"unset"}} /> ,
+      name : `Cart(${cartItems.length})`,
+      func : cart ,
+    },
+
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
   if (user.role === "admin") {
@@ -39,7 +49,7 @@ const UserOptions = ({ user }) => {
   }
 
   function dashboard() {
-    navigate("dashboard");
+    navigate("/dashboard");
   }
 
   function orders() {
@@ -83,6 +93,7 @@ const UserOptions = ({ user }) => {
             icon={item.icon}
             tooltipTitle={item.name}
             onClick={item.func}
+            tooltipOpen
           />
         ))}
                
