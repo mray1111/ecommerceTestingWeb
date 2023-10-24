@@ -29,8 +29,12 @@ import {loadStripe} from "@stripe/stripe-js"
 import OrderSuccess from "./component/Cart/OrderSuccess"
 import NotFound from "./component/Home/NotFound"
 import MyOrders from './component/Order/MyOrders';
+import OrderDetails from "./component/Order/OrderDetails"
 
 function App() {
+  
+  const shouldRenderConfirmOrder = 1;
+
   const { isAuthenticated, user } = useSelector((state) => state.user);
   const [stripeApiKey, setStripeApiKey] = useState(''); // Corrected the declaration
 
@@ -75,16 +79,28 @@ function App() {
           <Route path="/password/reset/:token" element ={<ResetPassword/>}></Route>
           <Route path="/cart" element ={<Cart/>}></Route>
           <Route path="/shipping" element ={<Shipping/>}></Route>
-          <Route path="/order/confirm" element ={<ConfirmOrder/>}></Route>
+          {/* <Route path="/order/confirm" element={<ConfirmOrder />} /> */}
           <Route path="/process/payment" element={
-            <Elements stripe={loadStripe(stripeApiKey)}>
-              <Payment />
-            </Elements>
-          }
-        />
+                <Elements stripe={loadStripe(stripeApiKey)}>
+                  <Payment />
+                </Elements>
+              }
+          />
       
           <Route path="/success" element ={<OrderSuccess/>}></Route>
           <Route path="/orders" element ={<MyOrders/>}></Route>
+          
+          {/* {shouldRenderConfirmOrder ? (
+          <Route path="/order/confirm" element={<ConfirmOrder />} />
+        ) : (
+          <Route path="/order/:id" element={<OrderDetails />} />
+        )}
+        {/* Catch-all route */}
+        <Route path="*" element={<NotFound />} /> */
+    
+              <Route path="/order/confirm" element={<ConfirmOrder />} />
+              <Route path="/order/:id" element={<OrderDetails />} />
+           
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

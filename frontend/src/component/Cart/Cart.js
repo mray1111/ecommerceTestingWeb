@@ -20,14 +20,16 @@ const Cart = () => {
   const {isAuthenticated } = useSelector((state) => state.user);
 
   const increaseQuantity = (id, quantity, stock) => {
+  
     const newQty = quantity + 1;
     if (stock <= quantity) {
       // Item is out of stock, show an alert
-      alert("This item is out of stock.");
+      alert.error("This item is out of stock.");
     } else {
       dispatch(addItemsToCart(id, newQty));
     }
   };
+
 
   const decreaseQuantity = (id, quantity) => {
     const newQty = quantity - 1;
