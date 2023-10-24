@@ -89,7 +89,9 @@ const ProductDetails = () => {
   }, [dispatch, id, error, alert,reviewError,success]);
 
   const options = {
-    size: "large",
+    size: "small",
+    color:"grey",
+    edit:false,
     value: product.ratings,
    readOnly:true,
    precision:0.5

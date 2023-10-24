@@ -8,9 +8,11 @@ const ReviewCard = ({ review }) => {
     const options = {
         edit: false,
         color: "rgba(20,20,20,0.1)",
-        activeColor: "tomato",
+        activeColor: "yellow",
+        size:"small",
         size: window.innerWidth < 600 ? 20 : 25,
         value: review.rating,
+        precision:0.5,
         isHalf: true,
       };
   return (
