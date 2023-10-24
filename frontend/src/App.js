@@ -29,9 +29,10 @@ import {loadStripe} from "@stripe/stripe-js"
 import OrderSuccess from "./component/Cart/OrderSuccess"
 import NotFound from "./component/Home/NotFound"
 import MyOrders from './component/Order/MyOrders';
-import OrderDetails from "./component/Order/OrderDetails"
-import Dashboard from "./component/admin/Dashboard"
-import ProductList from "./component/admin/ProductList.js"
+import OrderDetails from "./component/Order/OrderDetails";
+import Dashboard from "./component/admin/Dashboard" ;
+import ProductList from "./component/admin/ProductList.js";
+import NewProduct from "./component/admin/NewProduct";
 
 
 
@@ -104,6 +105,7 @@ function App() {
 
           <Route isAdmin={true} path="/admin/dashboard" element ={<Dashboard/>}></Route>
           <Route isAdmin={true} path="/admin/products" element ={<ProductList/>}></Route>
+          <Route isAdmin={true} path="/admin/product" element ={<NewProduct/>}></Route>
         </Routes>
         <Footer />
     </BrowserRouter>
