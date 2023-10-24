@@ -40,6 +40,7 @@ export const productReducer =(state = {product : [] },action) => {
 
     switch(action.type){
         case ALL_PRODUCT_REQUEST :
+          case ADMIN_PRODUCT_REQUEST :
             return{
                 loading :true ,
                 products :[],
@@ -53,7 +54,13 @@ export const productReducer =(state = {product : [] },action) => {
                     filteredProductsCount: action.payload.filteredProductsCount,
                 };
 
+                case ADMIN_PRODUCT_SUCCESS:
+                  return{
+                      loading :false ,
+                      products :action.payload,
+                  };
         case ALL_PRODUCT_FAIL :
+          case ADMIN_PRODUCT_FAIL:
                     return{
                         loading :false ,
                         error :action.payload,

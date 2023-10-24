@@ -30,6 +30,12 @@ import OrderSuccess from "./component/Cart/OrderSuccess"
 import NotFound from "./component/Home/NotFound"
 import MyOrders from './component/Order/MyOrders';
 import OrderDetails from "./component/Order/OrderDetails"
+import Dashboard from "./component/admin/Dashboard"
+import ProductList from "./component/admin/ProductList.js"
+
+
+
+
 
 function App() {
   
@@ -89,19 +95,15 @@ function App() {
       
           <Route path="/success" element ={<OrderSuccess/>}></Route>
           <Route path="/orders" element ={<MyOrders/>}></Route>
-          
-          {/* {shouldRenderConfirmOrder ? (
-          <Route path="/order/confirm" element={<ConfirmOrder />} />
-        ) : (
-          <Route path="/order/:id" element={<OrderDetails />} />
-        )}
-        {/* Catch-all route */}
         <Route path="*" element={<NotFound />} /> */
     
               <Route path="/order/confirm" element={<ConfirmOrder />} />
               <Route path="/order/:id" element={<OrderDetails />} />
            
           <Route path="*" element={<NotFound />} />
+
+          <Route isAdmin={true} path="/admin/dashboard" element ={<Dashboard/>}></Route>
+          <Route isAdmin={true} path="/admin/products" element ={<ProductList/>}></Route>
         </Routes>
         <Footer />
     </BrowserRouter>
