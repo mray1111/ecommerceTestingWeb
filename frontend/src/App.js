@@ -37,7 +37,8 @@ import UpdateProduct from "./component/admin/UpdateProduct";
 import OrderList from "./component/admin/OrderList" ;
 import ProcessOrder from "./component/admin/ProcessOrder";
 import UsersList from './component/admin/UsersList';
-import UpdateUser from './component/admin/UpdateUser';
+import UpdateUser from './component/admin/UpdateUser'; 
+import ProductReviews from "./component/admin/ProductReviews"
 
 
 
@@ -70,14 +71,16 @@ function App() {
     getStripeApiKey();
   }, []);
 
+  window.addEventListener("contextmenu", (e)=>e.preventDefault());
+
   return (
       
      
   <BrowserRouter>
       <Header/>
          {isAuthenticated && <UserOptions user ={user}/>}
-        <Routes>
 
+        <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails/>} />
           <Route path="/products" element={<Products/>}/>
@@ -91,34 +94,22 @@ function App() {
           <Route path="/password/reset/:token" element ={<ResetPassword/>}></Route>
           <Route path="/cart" element ={<Cart/>}></Route>
           <Route path="/shipping" element ={<Shipping/>}></Route>
-          {/* <Route path="/order/confirm" element={<ConfirmOrder />} /> */}
-          <Route path="/process/payment" element={
-                <Elements stripe={loadStripe(stripeApiKey)}>
-                  <Payment />
-                </Elements>
-              }
-          />
-      
+          <Route path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>}/>
           <Route path="/success" element ={<OrderSuccess/>}></Route>
           <Route path="/orders" element ={<MyOrders/>}></Route>
-        <Route path="*" element={<NotFound />} /> */
-    
-              <Route path="/order/confirm" element={<ConfirmOrder />} />
-              <Route path="/order/:id" element={<OrderDetails />} />
-           
+          <Route path="/order/confirm" element={<ConfirmOrder />} />
+          <Route path="/order/:id" element={<OrderDetails />} />
           <Route path="*" element={<NotFound />} />
-
           <Route isAdmin={true} path="/admin/dashboard" element ={<Dashboard/>}></Route>
           <Route isAdmin={true} path="/admin/products" element ={<ProductList/>}></Route>
           <Route isAdmin={true} path="/admin/product" element ={<NewProduct/>}></Route>
-
           <Route isAdmin={true} path="/admin/product/:id" element ={<UpdateProduct/>}></Route>
           <Route isAdmin={true} path="/admin/orders" element ={<OrderList/>}></Route> 
           <Route isAdmin={true} path="/admin/order/:id" element ={<ProcessOrder/>}></Route>
           <Route isAdmin={true} path="/admin/users" element ={<UsersList/>}></Route>
-
           <Route isAdmin={true} path="/admin/user/:id" element ={<UpdateUser/>}></Route>
-
+          <Route isAdmin={true} path="/admin/reviews" element ={<ProductReviews/>}></Route>
+          <Route path="*" element={<NotFound />} /> */
         </Routes>
         <Footer />
     </BrowserRouter>

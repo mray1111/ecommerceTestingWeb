@@ -43,6 +43,12 @@ const Dashboard = () => {
     }
   }, [products]);
 
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
+
   const lineState = {
     type: "line",
     data: {
@@ -52,7 +58,7 @@ const Dashboard = () => {
           label: "TOTAL AMOUNT",
           backgroundColor: "tomato",
           borderColor: "rgb(197, 72, 49)",
-          data: [0, 4000],
+          data: [0,  totalAmount],
         },
       ],
     },
@@ -96,7 +102,7 @@ const Dashboard = () => {
         <div className="dashboardSummary">
           <div>
             <p>
-              Total Amount <br /> ₹2000
+             Total Amount <br /> ₹{totalAmount}
             </p>
           </div>
           <div className="dashboardSummaryBox2">

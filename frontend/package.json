@@ -37,6 +37,7 @@
     "react-redux": "^8.1.2",
     "react-router": "^6.17.0",
     "react-scripts": "5.0.1",
+    "react-social-icons": "^6.4.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
     "template": "^0.17.5",
