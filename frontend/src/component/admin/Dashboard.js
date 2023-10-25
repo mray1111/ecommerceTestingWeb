@@ -10,6 +10,7 @@ import MetaData from "../layout/Metadata";
 import { Chart, registerables } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { getAllOrders } from "../../actions/orderAction.js";
+import { getAllUsers } from "../../actions/userAction.js";
 
 Chart.register(...registerables);
 
@@ -18,11 +19,16 @@ const Dashboard = () => {
   const { products, loading } = useSelector((state) => state.products);
   const { orders, loading: ordersLoading } = useSelector((state) => state.allOrders);
 
+
+  const { users,loading :UsersList } = useSelector((state) => state.allUsers);
+  console.log("User is ",users) ;
+
   const [outOfStock, setOutOfStock] = useState(0);
 
   useEffect(() => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   useEffect(() => {
@@ -104,8 +110,8 @@ const Dashboard = () => {
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
-              {/* <p>{users && users.length}</p> */}
-              <p>2</p>
+              <p>{users && users.length}</p>
+              
             </Link>
           </div>
         </div>
