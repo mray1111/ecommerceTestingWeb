@@ -33,6 +33,9 @@ import OrderDetails from "./component/Order/OrderDetails";
 import Dashboard from "./component/admin/Dashboard" ;
 import ProductList from "./component/admin/ProductList.js";
 import NewProduct from "./component/admin/NewProduct";
+import UpdateProduct from "./component/admin/UpdateProduct";
+import OrderList from "./component/admin/OrderList" ;
+import ProcessOrder from "./component/admin/ProcessOrder";
 
 
 
@@ -106,6 +109,11 @@ function App() {
           <Route isAdmin={true} path="/admin/dashboard" element ={<Dashboard/>}></Route>
           <Route isAdmin={true} path="/admin/products" element ={<ProductList/>}></Route>
           <Route isAdmin={true} path="/admin/product" element ={<NewProduct/>}></Route>
+
+          <Route isAdmin={true} path="/admin/product/:id" element ={<UpdateProduct/>}></Route>
+          <Route isAdmin={true} path="/admin/orders" element ={<OrderList/>}></Route> 
+          <Route isAdmin={true} path="/admin/order/:id" element ={<ProcessOrder/>}></Route>
+
         </Routes>
         <Footer />
     </BrowserRouter>

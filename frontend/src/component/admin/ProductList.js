@@ -13,8 +13,8 @@ import { Button } from "@material-ui/core";
 import MetaData from "../layout/Metadata";
 import { AiFillEdit, AiOutlineDelete } from "react-icons/ai";
 import SideBar from "./Sidebar";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom"; 
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 
 
@@ -26,13 +26,32 @@ const ProductList = () => {
   const alert = useAlert();
   const navigate = useNavigate();
   const {  products, error } = useSelector((state) => state.products);
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.product
+  );
+
+  const deleteProductHandler = (id) => {
+    dispatch(deleteProduct(id));
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+
+    if (deleteError) {
+      alert.error(deleteError);
+      dispatch(clearErrors());
+    }
+
+    if (isDeleted) {
+      alert.success("Product Deleted Successfully");
+      navigate("/admin/dashboard");
+      dispatch({ type: DELETE_PRODUCT_RESET });
+    }
     dispatch(getAdminProduct());
-  }, [dispatch, alert, error]);
+  }, [dispatch, alert, error,deleteError,navigate,isDeleted]);
 
   const columns = [
     { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
@@ -69,7 +88,11 @@ const ProductList = () => {
             <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
               <AiFillEdit />
             </Link>
-            <Button>
+            <Button
+              onClick={() =>
+                deleteProductHandler(params.getValue(params.id, "id"))
+              }
+            >
               <AiOutlineDelete />
             </Button>
           </Fragment>

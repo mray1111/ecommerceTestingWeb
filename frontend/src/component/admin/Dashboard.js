@@ -9,17 +9,20 @@ import { getAdminProduct } from "../../actions/productActions.js";
 import MetaData from "../layout/Metadata";
 import { Chart, registerables } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { getAllOrders } from "../../actions/orderAction.js";
 
 Chart.register(...registerables);
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { products, loading } = useSelector((state) => state.products);
+  const { orders, loading: ordersLoading } = useSelector((state) => state.allOrders);
 
   const [outOfStock, setOutOfStock] = useState(0);
 
   useEffect(() => {
     dispatch(getAdminProduct());
+    dispatch(getAllOrders());
   }, [dispatch]);
 
   useEffect(() => {
@@ -97,10 +100,11 @@ const Dashboard = () => {
             </Link>
             <Link to="/admin/orders">
               <p>Orders</p>
-              <p>4</p>
+              <p>{ordersLoading ? 'Loading...' : (orders && orders.length)}</p>
             </Link>
             <Link to="/admin/users">
               <p>Users</p>
+              {/* <p>{users && users.length}</p> */}
               <p>2</p>
             </Link>
           </div>
