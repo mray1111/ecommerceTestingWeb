@@ -1,0 +1,72 @@
+.orderDetailsPage {
+  background-color: rgb(219, 255, 253);
+  margin-left: 3cm; /* Shift 2cm to the right */
+}
+
+.orderDetailsContainer > h1 {
+  font: 500 2.5rem "BoldFont", "Roboto", "sans-serif";
+  margin: 1rem 0;
+  color: rgb(30, 139, 198);
+}
+
+.orderDetailsContainer {
+  padding: 2rem;
+  padding-bottom: 0;
+}
+
+.orderDetailsContainer > p {
+  font: 400 1rem "Roboto";
+}
+
+.orderDetailsContainerBox,
+.orderDetailsCartItemsContainer {
+  margin: 1rem;
+}
+
+.orderDetailsContainerBox > div {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.orderDetailsContainerBox > div > p {
+  font: 400 0.9rem "Roboto";
+  color: black;
+}
+
+.orderDetailsContainerBox > div > span {
+  margin: 0 0.5rem;
+  font: 100 0.9rem "Roboto";
+  color: #575757;
+}
+
+.orderDetailsCartItems > p {
+  font: 400 1rem "Roboto";
+}
+
+.orderDetailsCartItems {
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.164);
+}
+
+.orderDetailsCartItemsContainer > div {
+  display: flex;
+  font: 400 0.9rem "Roboto";
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.orderDetailsCartItemsContainer > div > img {
+  width: 3rem;
+}
+
+.orderDetailsCartItemsContainer > div > a {
+  color: #575757;
+  margin: 0 1rem;
+  width: 60%;
+  text-decoration: none;
+}
+
+.orderDetailsCartItemsContainer > div > span {
+  font: 100 0.9rem "Roboto";
+  color: #5e5e5e;
+}
