@@ -38,13 +38,17 @@ const UpdateProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    'Laptop',
+    'Footwear',
+    'Bottom Wear',
+    'Tops',
+    'Tshirts',
+    'Books',
+    'SmartPhone',
+    'Camera',
+    'Perfume',
+    'Kurta',
+    'Bags',
   ];
 
   useEffect(() => {
