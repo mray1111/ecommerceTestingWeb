@@ -19,22 +19,53 @@
   justify-content: center;
 }
 
-.filterBox {
+/* .filterBox {
   width: 30%;
   padding: 0 2vmax;
+} */
+.filterBox {
+  /* Your existing styles for the filter box */
+  background-color: #f2f2f2;
+  padding: 20px;
+  /* Add the following styles to position the "Filter Off" button */
+  position: relative;
 }
 
+.clearFiltersButton {
+  /* Styles for the "Filter Off" button */
+  background-color: #ff5733;
+  color: #fff;
+  border: none;
+  size: 5px;
+  padding: 15px 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 600px; /* Adjust the top and right values as needed */
+ /*  right: 200px; */
+  left :100px
+}
 .paginationBox {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 6vmax;
+  /* Additional styles to ensure centering */
+  height: 100%;
+  width: 100%;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
   padding: 0;
+  /* Additional styles to ensure centering */
+  list-style: none;
+}.pagination li {
+  font-size: 18px; /* Adjust the font size as needed */
+  font-weight: bold;
+  margin: 0 5px; /* Adjust the spacing between buttons */
 }
+
 
 .page-item {
   background-color: rgb(255, 255, 255);

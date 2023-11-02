@@ -48,7 +48,7 @@
   width: 50%;
   border: none;
   transition: all 0.5s;
-  transform: translateX(0); /* Initially centered */
+  transform: translateX(7); /* Initially centered */
   margin: 0 auto; /* Center the button horizontally */
 }
 

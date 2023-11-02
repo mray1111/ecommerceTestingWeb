@@ -44,8 +44,7 @@ const Home = () => {
         <Fragment>
           <MetaData title="DBMS Manish and Purushottam" />
           <div className="banner">
-            <p>Welcome to  IKOM    Ecommerce - 
-              Website </p>
+            <p>Welcome to  IKOM-Ecommerce</p>
             <div className="flex-container">
         <a href="http://localhost:3000/account">
           <VscAccount className="Larger_acc" />
@@ -58,7 +57,8 @@ const Home = () => {
         </a>
 </div>
 
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
+          <h1>Unbox Joy, Discover Style</h1>
+            {/* <h2>Namaste BHARAT</h2> */}
 
             <a href="#container">
               <button>

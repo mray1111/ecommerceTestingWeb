@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment ,useEffect} from "react";
 import "./Cart.css";
 import CartItemCard from "./CartItemCard";
 import { useSelector, useDispatch } from "react-redux";
@@ -56,6 +56,17 @@ const Cart = () => {
     }
   };
 
+
+  const { user, loading } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (isAuthenticated === false) {
+      navigate("/login");
+    }
+    else{
+      navigate("/cart");
+    }
+  }, [isAuthenticated, navigate]);
 
 
 

@@ -21,27 +21,22 @@ import {
 } from "@material-ui/core";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
-
-
-
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
 
   const { product, loading, error } = useSelector((state) => state.productDetails);
- // console.log(product);
   const [quantity, setQuantity] = useState(1);
+
+  
 
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
 
-  const { success, error: reviewError } = useSelector(
-    (state) => state.newReview
-  );
-
+  const { success, error: reviewError } = useSelector((state) => state.newReview);
 
   const addToCartHandler = () => {
     if (product.Stock < 1) {
@@ -56,9 +51,9 @@ const ProductDetails = () => {
     open ? setOpen(false) : setOpen(true);
   };
 
-
-
   const reviewSubmitHandler = () => {
+  
+    // If the user is authenticated, proceed with review submission
     const myForm = new FormData();
 
     myForm.set("rating", rating);
@@ -68,9 +63,11 @@ const ProductDetails = () => {
     dispatch(newReview(myForm));
 
     setOpen(false);
-  }; 
-  
+  };
+
+
   useEffect(() => {
+
     if (error) {
       alert.error(error);
       dispatch(clearErrors);
@@ -80,21 +77,21 @@ const ProductDetails = () => {
       dispatch(clearErrors);
     }
 
-    if(success){
-      alert.success("Review Submittted SuccessFully ..")
-      dispatch({type:NEW_REVIEW_RESET
-      })
+    if (success) {
+      alert.success("Review Submitted Successfully ..");
+      dispatch({ type: NEW_REVIEW_RESET });
     }
+
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert,reviewError,success]);
+  }, [dispatch, id, error, alert, reviewError, success]);
 
   const options = {
     size: "small",
-    color:"grey",
-    edit:false,
+    color: "grey",
+    edit: false,
     value: product.ratings,
-   readOnly:true,
-   precision:0.5
+    readOnly: true,
+    precision: 0.5,
   };
 
   const increaseQuantity = () => {
@@ -117,7 +114,7 @@ const ProductDetails = () => {
         <Fragment>
           <Metadata title={`${product.name} --- Ecommerce`} />
           <div className="ProductDetails">
-            <div >
+            <div>
               <div>
                 {product.images &&
                   product.images.map((item, i) => (
@@ -131,7 +128,7 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <div >
+            <div>
               <div className="detailsBlock-1">
                 <h2>{product.name}</h2>
                 <p>Product # {product._id}</p>
@@ -153,24 +150,27 @@ const ProductDetails = () => {
                     <input readOnly type="number" value={quantity} />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button 
-                      disabled ={product.Stock < 1 ? true : false} 
-                      onClick={addToCartHandler}>Add to Cart</button>
+                  <button
+                    disabled={product.Stock < 1 ? true : false}
+                    onClick={addToCartHandler}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
 
-
-                  <p>
-                    Status:
-                    <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                      {product.Stock < 1 ? "OutOfStock" : "InStock"}
-                    </b>
-                  </p>
+                <p>
+                  Status:
+                  <b
+                    className={product.Stock < 1 ? "redColor" : "greenColor"}
+                  >
+                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
+                  </b>
+                </p>
               </div>
 
               <div className="detailsBlock-4">
                 Description : <p>{product.description}</p>
               </div>
-
 
               <button onClick={submitReviewToggle} className="submitReview">
                 Submit Review
@@ -180,41 +180,36 @@ const ProductDetails = () => {
 
           <h3 className="reviewsHeading">REVIEWS</h3>
 
-          <Dialog 
-          aria-labelledby="simple-dialog-title"
-                open={open}
-                onClose={submitReviewToggle}
-
+          <Dialog
+            aria-labelledby="simple-dialog-title"
+            open={open}
+            onClose={submitReviewToggle}
           >
-            <DialogTitle >Submit Review</DialogTitle>
+            <DialogTitle>Submit Review</DialogTitle>
             <DialogContent className="submitDialog">
-            <ReactStars
-  onChange={(newRating) => setRating(newRating)}
-  value={rating}
-  size="large"
-/>
+              <ReactStars
+                onChange={(newRating) => setRating(newRating)}
+                value={rating}
+                size="large"
+              />
 
-
-
-              
-              <textarea 
-                      className="submitDialogTextArea"
-                      cols="30"
-                      rows="5"
-                      value={comment}
-                      onChange={(e)=>setComment(e.target.value)}
-              >
-
-              </textarea>
-
+              <textarea
+                className="submitDialogTextArea"
+                cols="30"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
             </DialogContent>
 
-
-              <DialogActions>
-                <Button color="secondary" onClick={submitReviewToggle}>Cancel</Button>
-                <Button color="primary" onClick={reviewSubmitHandler}> Submit</Button>
-              </DialogActions>
-             
+            <DialogActions>
+              <Button color="secondary" onClick={submitReviewToggle}>
+                Cancel
+              </Button>
+              <Button color="primary" onClick={reviewSubmitHandler}>
+                Submit
+              </Button>
+            </DialogActions>
           </Dialog>
 
           {product.reviews && product.reviews[0] ? (

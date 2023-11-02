@@ -30,13 +30,17 @@ const NewProduct = () => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    'Laptop',
+  'Footwear',
+  'Bottom Wear',
+  'Tops',
+  'Tshirts',
+  'Books',
+  'SmartPhone',
+  'Camera',
+  'Perfume',
+  'Kurta',
+  'Bags'
   ];
 
   useEffect(() => {
@@ -113,7 +117,7 @@ const NewProduct = () => {
               />
             </div>
             <div>
-              {/* <AiFillDollarCircle /> */}
+              {/* < HiMiniCurrencyRupee /> */}
               <input
                 type="number"
                 placeholder="Price"
@@ -123,7 +127,7 @@ const NewProduct = () => {
             </div>
 
             <div>
-              {/* <AiOutlineFileText /> */}
+              <AiOutlineFileText />
 
               <textarea
                 placeholder="Product Description"
@@ -147,7 +151,7 @@ const NewProduct = () => {
             </div>
 
             <div>
-              {/* <AiOutlineCloud /> */}
+              <AiOutlineCloud />
               <input
                 type="number"
                 placeholder="Stock"

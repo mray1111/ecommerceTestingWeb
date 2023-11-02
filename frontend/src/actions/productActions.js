@@ -41,7 +41,7 @@ import {
 } from "../constants/productConstants";
 
 
-export const getProduct = (keyword="",currentPage = 1,price =[0,25000],category, ratings=0) =>
+export const getProduct = (keyword="",currentPage = 1,price =[0,250000],category, ratings=0) =>
 async (dispatch)=>{
     try{
 
