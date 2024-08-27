@@ -59,7 +59,6 @@ function App() {
       console.error('Error fetching Stripe API key:', error);
     }
   }
-
   useEffect(() => {
     WebFont.load({
       google: {
@@ -94,7 +93,7 @@ function App() {
           <Route path="/password/reset/:token" element ={<ResetPassword/>}></Route>
           <Route path="/cart" element ={<Cart/>}></Route>
           <Route path="/shipping" element ={<Shipping/>}></Route>
-          <Route path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>}/>
+          {stripeApiKey && (<Route path="/process/payment" element={<Elements stripe={loadStripe(stripeApiKey)}><Payment /></Elements>}/>)}
           <Route path="/success" element ={<OrderSuccess/>}></Route>
           <Route path="/orders" element ={<MyOrders/>}></Route>
           <Route path="/order/confirm" element={<ConfirmOrder />} />
