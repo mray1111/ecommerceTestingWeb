@@ -70,3 +70,47 @@ footer {
   .rightFooter > a:hover {
     color: #eb4034;
   }
+
+
+
+
+  @media screen and (max-width: 400px) {
+    footer {
+      flex-direction: column;
+      padding: 6vmax 2vmax; /* Increased padding */
+      align-items: flex-start;
+    }
+  
+    .leftFooter, .midFooter, .rightFooter {
+      width: 100%;
+      margin-bottom: 3vmax; /* Increased space between sections */
+      text-align: center;
+    }
+  
+    .leftFooter > h4, .rightFooter > h4 {
+      font-size: 4.5vmax; /* Increased heading size */
+    }
+  
+    .leftFooter > p, .rightFooter > a {
+      font-size: 4vmax; /* Increased text size */
+    }
+  
+    .midFooter > h1 {
+      font-size: 4vmax; /* Increased main heading size */
+    }
+  
+    .midFooter > p {
+      font-size: 4.5vmax; /* Increased paragraph text size */
+      max-width: 100%;
+    }
+  
+    .leftFooter > img {
+      width: 12vmax; /* Increased image size */
+      margin: 2vmax; /* Adjusted margin */
+    }
+  
+    .rightFooter > a {
+      font-size: 4.3vmax; /* Increased link text size */
+    }
+  }
+  

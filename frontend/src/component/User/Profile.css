@@ -92,6 +92,10 @@
     background-color: rgb(31, 31, 31);
   }
   
+  .user-image{
+    width: 35vw;
+    height: 241px
+  }
   @media screen and (max-width: 600px) {
     .profileContainer {
       flex-direction: column;
@@ -125,5 +129,14 @@
       font: 400 1.8vmax "Roboto";
       padding: 1vmax;
       margin: 2vmax 0;
+    }
+  }
+
+  @media screen and (max-width:400px) {
+    .user-image{
+      height: 21vh;
+    }
+    .my-profile{
+      height: 8vh
     }
   }

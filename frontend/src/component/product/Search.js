@@ -25,11 +25,12 @@ const Search = ({ history }) => {
       <Metadata title={"search a Product -- Ecommerce "}></Metadata>
       <form className="searchBox" onSubmit={searchSubmitHandler}>
         <input
+          className="box1"
           type="text"
           placeholder="Search a Product ..."
           onChange={(e) => setKeyword(e.target.value)} // Trim the keyword
         />
-        <input type="submit" value="Search" />
+        <input className="box2" type="submit" value="Search" />
       </form>
     </Fragment>
   );

@@ -239,3 +239,123 @@
   margin: 12px;
   color: rgb(0, 0, 33);
 }
+
+
+@media screen and (max-width: 400px) {
+  .LoginSignUpContainer {
+    padding: 10px;
+  }
+
+  .LoginSignUpBox {
+    width: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .login_signUp_toggle {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    margin-bottom: 10px; /* Ensure space for visibility */
+  }
+
+  .loginForm, .signUpForm {
+    position: relative;
+    top: -55px;
+    width: 100%;
+    padding: 0;
+    flex-direction: column; /* Ensure column alignment */
+  }
+
+  .loginEmail, .loginPassword, .signUpName, .signUpEmail, .signUpPassword, #registerImage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .loginEmail input, .loginPassword input, .signUpName input, .signUpEmail input, .signUpPassword input {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  #registerImage img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+ 
+  }
+
+  .loginBtn, .signUpBtn {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .login_signUp_toggle p {
+    padding: 5px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+  }
+  .loginForm{
+    gap: 14px;
+    margin-top: 21px;
+  }
+  .loginForm > div > input,
+  .signUpForm > div > input {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 3.5vmax cursive;
+  outline: none;
+}
+.loginForm{
+  height: 100vh;
+}
+.signUpForm{
+  height: 92vh;
+    width: 90vw;
+    margin-left: -17px;
+    background: white;
+    padding: 13px;
+    gap: 13px;
+}
+.loginBtn{
+  position: relative;
+  top: -85px;
+}
+.ForgetPass{
+  position: relative;
+    top: -41px;
+    left: -35px;
+    font-size: 15px;
+    color: blue;
+}
+.signUpBtn{
+  position: absolute;
+  top: 346px;
+}
+.forgotPasswordHeading{
+  font-size: 21px;
+}
+#registerImage{
+position: relative;
+    top: -77px;
+}
+.signUpPassword{
+  position: relative;
+  top: -32px;
+}
+.signUpEmail{
+  position: relative;
+  top: -30px;
+}
+}

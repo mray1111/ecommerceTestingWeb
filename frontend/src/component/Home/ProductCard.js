@@ -19,7 +19,7 @@ const ProductCard = ({ product }) => {
   return (
     <Link className='productCard' to={product ? `/product/${product._id}` : '#'}>
       {/* Use imageUrl if it's defined, or a placeholder image */}
-      <img src={imageUrl || 'placeholder-image-url'} alt={product ? product.name : 'Product'} />
+      <img className='productCard-img' src={imageUrl || 'placeholder-image-url'} alt={product ? product.name : 'Product'} />
       <p>{product ? product.name : 'Product'}</p>
       <span>{`$ ${product ? product.price : 0}`}</span>
 

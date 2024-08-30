@@ -116,7 +116,7 @@ const Products = ({ match }) => {
                 ))}
               </ul>
               <fieldset>
-                <Typography component="legend" id="rating-legend">
+                <Typography component="legend" id="rating-legend" className='ratings-above'>
                   Ratings Above
                 </Typography>
                 <Slider

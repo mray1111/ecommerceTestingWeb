@@ -23,10 +23,10 @@ const Profile = () => {
         <Fragment>
           <MetaData title={`${user?.name || 'User'}'s Profile`} />
           <div className="profileContainer">
-            <div>
+            <div className="my-profile">
               <h1>My Profile</h1>
               {user?.avatar && user.avatar.url ? (
-                <img src={user.avatar.url} alt={user.name || 'User'} />
+                <img className="user-image" src={user.avatar.url} alt={user.name || 'User'} />
               ) : (
                 <img src="/default-avatar.jpg" alt="Default Avatar" />
               )}

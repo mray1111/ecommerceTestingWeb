@@ -175,4 +175,7 @@
       width: 100%;
       font: 300 2vmax "Roboto";
     }
+    .checkOutBtn{
+      width: 165px;
+    }
   }

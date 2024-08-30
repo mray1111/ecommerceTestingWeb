@@ -53,98 +53,116 @@
   text-align: center;
   font-family: Roboto;
   font-size: 1.4vmax;
-  border-bottom: 1px solid rgba(21, 21, 21, 0.5)}
+  border-bottom: 1px solid rgba(21, 21, 21, 0.5);
+}
 
-  .productCard {
-    width: 14vmax;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: rgb(48, 48, 48);
-    margin: 2vmax;
-    transition: all 0.5s;
-    padding-bottom: 0.5vmax;
-  }
+.productCard {
+  width: 14vmax;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: rgb(48, 48, 48);
+  margin: 2vmax;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+}
 
-  .productCard > img {
-    width: 14vmax;
-  }
-  
-  .productCard > div {
-    margin: 0.5vmax;
-    display: flex;
-  
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .productCardSpan {
-    margin: 0.5vmax;
-    font: 300 0.7vmax "Roboto";
-  }
-  
+
+.productCard > div {
+  margin: 0.5vmax;
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.productCardSpan {
+  margin: 0.5vmax;
+  font: 300 0.7vmax "Roboto";
+}
+
+.productCard > p {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  margin: 1vmax 0.5vmax;
+  margin-bottom: 0;
+}
+
+.productCard > span {
+  margin: 0.5vmax;
+  color: tomato;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1vmax;
+}
+
+.productCard:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+
+  transform: translateY(-1vmax);
+}
+
+@media screen and (max-width: 600px) {
   .productCard > p {
-    font-family: "Roboto";
-    font-size: 1.2vmax;
-    margin: 1vmax 0.5vmax;
-    margin-bottom: 0;
+    font-size: 1.7vmax;
   }
-  
+
+  .productCard > div {
+    margin: 0vmax;
+    display: block;
+  }
+
   .productCard > span {
-    margin: 0.5vmax;
-    color: tomato;
-    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-    font-size: 1vmax;
-  }
-  
-  .productCard:hover {
-    box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
-  
-    transform: translateY(-1vmax);
-  }
-  
-  @media screen and (max-width: 600px) {
-    .productCard > p {
-      font-size: 1.7vmax;
-    }
-  
-    .productCard > div {
-      margin: 0vmax;
-      display: block;
-    }
-  
-    .productCard > span {
-      font-size: 1.5vmax;
-    }
-  
-    .productCard > div > span {
-      margin: 0 0.5vmax;
-      font: 300 1vmax "Roboto";
-    }
-  }
-  .container{
-    display: flex;
-    margin: 2vax auto;
-    width: 95vw;
-    flex-wrap: wrap;
-    justify-content:right;
-    /* max-width: 100%; */
+    font-size: 1.5vmax;
   }
 
+  .productCard > div > span {
+    margin: 0 0.5vmax;
+    font: 300 1vmax "Roboto";
+  }
+}
+.container {
+  display: flex;
+  margin: 2vax auto;
+  width: 95vw;
+  flex-wrap: wrap;
+  justify-content: right;
+  /* max-width: 100%; */
+}
 
-  .Larger{
-    font-size: 2rem;
-    color: #fff;
-  }
-  .Larger_acc{
-    font-size: 2rem;
-    color: #fff;
+.Larger {
+  font-size: 2rem;
+  color: #fff;
+}
+.Larger_acc {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.flex-container {
+  margin-top: 12px;
+  display: flex;
+  align-items: center; /* Optional: To vertically align the items in the center */
+  justify-content: space-between; /* This adds space between the items */
+  gap: 70px; /* Adjust the gap size as needed */
+}
+
+@media screen and (max-width: 400px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .flex-container {
-    margin-top: 12px;
-    display: flex;
-    align-items: center; /* Optional: To vertically align the items in the center */
-    justify-content: space-between; /* This adds space between the items */
-    gap: 70px; /* Adjust the gap size as needed */
+  .productCard > p {
+    font-size: 2.7vmax;
+    width: 147px;
+}
+
+}
+
+
+@media screen and (max-width: 400px) {
+  .container> productCard{
+      width: 28vmax;
+      margin-left: 120px;
   }
+}

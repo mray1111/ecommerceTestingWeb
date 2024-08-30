@@ -12,6 +12,8 @@ import {VscAccount}  from "react-icons/vsc"
 import {BsFillCartPlusFill} from  "react-icons/bs"
 import {ImSearch} from "react-icons/im"
 
+import Navbar from '../Navbar/Navbar.js'
+
 const product = {
   name: "Blue T-shirt",
   images: [{ url: "http://i.ibb.co/DRST11n/1.webp" }],
@@ -42,6 +44,8 @@ const Home = () => {
         <Loader />
       ) : (
         <Fragment>
+         <Navbar />
+
           <MetaData title="DBMS Manish and Purushottam" />
           <div className="banner">
             <p>Welcome to  IKOM-Ecommerce</p>

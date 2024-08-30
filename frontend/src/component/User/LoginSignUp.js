@@ -118,6 +118,7 @@ const LoginSignUp = () => {
                 <div className="loginEmail">
                   <MailLockIcon />
                   <input
+                    className="input-box"
                     type="email"
                     placeholder="Email"
                     required
@@ -129,6 +130,7 @@ const LoginSignUp = () => {
                 <div className="loginPassword">
                   <HttpsIcon />
                   <input
+                    className="input-box"
                     type="password"
                     placeholder="Password"
                     required

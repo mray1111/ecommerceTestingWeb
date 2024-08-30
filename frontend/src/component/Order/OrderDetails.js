@@ -33,8 +33,8 @@ const OrderDetails = () => {
           <MetaData title="Order Details" />
           <div className="orderDetailsPage">
             <div className="orderDetailsContainer">
-              <Typography component="h1">
-                Order #{order && order._id}
+              <Typography component="h5" className="order-id">
+                Your Order id is {order && order._id}
               </Typography>
               <Typography>Shipping Info</Typography>
               <div className="orderDetailsContainerBox">

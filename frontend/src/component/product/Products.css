@@ -135,9 +135,9 @@
   border: 1px solid rgba(0, 0, 0, 0.811);
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .filterBox {
-    width: 20vmax;
+    width: 30vw;
     position: static;
     margin: auto;
   }
@@ -145,4 +145,105 @@
   .page-link {
     font: 300 1.7vmax "Roboto";
   }
+} */
+
+
+
+
+@media screen and (max-width: 400px) {
+  /* Adjust the Product Heading */
+  .productsHeading {
+    margin: 2vmax auto;
+    width: 80vw; /* Narrower width */
+    font-size: 5vmax; /* Larger text for readability */
+    padding: 2vmax;
+  }
+
+  /* Adjust Products Container */
+  .products {
+    width: 60vw;
+    margin-left: 142px; /* Full width */
+    padding: 0;
+    flex-direction: column; /* Stack products vertically */
+    justify-content: center;
+  }
+
+
+
+  /* Adjust Category Links */
+  .categoryBox {
+    padding: 0;
+    text-align: center; /* Center category links */
+  }
+  
+  .category-link {
+    font-size: 3.5vmax; /* Increase size for smaller screens */
+    margin: 1vmax 0;
+  }
+
+  /* Adjust Price and Rating Sliders */
+  .MuiSlider-root {
+    width: 80vw; /* Adjust slider width */
+    margin: 1vmax auto;
+  }
+
+  /* Adjust Pagination */
+  .paginationBox {
+    width: 100%;
+    margin: 4vmax 0;
+  }
+  
+  .page-item {
+    padding: 1vmax 2vmax;
+    font-size: 4vmax; /* Increase button size */
+  }
+  
+  .page-link {
+    font-size: 4vmax; /* Increase link font size */
+  }
+  
+  /* Filter Off Button */
+  .clearFiltersButton {
+    font-size: 3.5vmax; /* Increase button font size */
+    padding: 1.5vmax 3vmax;
+    margin: 3vmax auto;
+    display: block;
+  }
+ 
+@media screen and (min-width:450px) {
+    .productCard>img{
+    width: 53vmax;
+  }
 }
+  .container{
+    overflow: hidden;
+  }
+  .input-box{
+    font-size: 15px
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  .filterBox {
+    position: relative;
+    top: -15px;
+    left: -159px;
+    width: 112px;
+  }
+
+  /* here is a bug= if 197 px then products page correct but home page incorrect  */
+  .products> .productCard{
+    margin-left: 197px;
+  }
+  .pagination{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    position: relative;
+    left: 174px;
+  }
+  .ratings-above{
+    font-size: 12px;
+  }
+}
+

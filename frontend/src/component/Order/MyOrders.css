@@ -55,7 +55,7 @@
     display: none !important;
   }
   
-  @media screen and (max-width: 600px) {
+  /* @media screen and (max-width: 600px) {
     .myOrdersPage {
       padding: 0;
       height: 93vh;
@@ -77,4 +77,27 @@
     .MuiDataGrid-columnHeader div {
       font: 500 5vw "Roboto" !important;
     }
+  } */
+@media screen and (max-width: 400px) {
+  .myOrdersPage {
+    padding: 0 4vw; /* Adjust padding for smaller screens */
+    height: auto; /* Allow height to adjust based on content */
   }
+
+  #myOrdersHeading {
+    font: 400 3vw "Roboto"; /* Adjust font size for smaller screens */
+    padding: 2vw; /* Adjust padding for smaller screens */
+  }
+
+  .myOrdersTable div {
+    font: 300 3vw "Roboto"; /* Adjust font size for smaller screens */
+  }
+
+  .MuiDataGrid-columnHeader {
+    padding: 0.5vmax !important; /* Reduce padding */
+  }
+
+  .MuiDataGrid-columnHeader div {
+    font: 400 2.5vw "Roboto" !important; /* Adjust font size */
+  }
+}

@@ -146,13 +146,14 @@ const ProductDetails = () => {
                 <h1>{`₹${product.price}`}</h1>
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1">
-                    <button onClick={decreaseQuantity}>-</button>
-                    <input readOnly type="number" value={quantity} />
-                    <button onClick={increaseQuantity}>+</button>
+                    <button className="button-quantity" onClick={decreaseQuantity}>-</button>
+                    <input className="button-text" readOnly type="number" value={quantity} />
+                    <button className="button-quantity" onClick={increaseQuantity}>+</button>
                   </div>
                   <button
                     disabled={product.Stock < 1 ? true : false}
                     onClick={addToCartHandler}
+                    className="button-cart"
                   >
                     Add to Cart
                   </button>
@@ -169,7 +170,7 @@ const ProductDetails = () => {
               </div>
 
               <div className="detailsBlock-4">
-                Description : <p>{product.description}</p>
+                Description : <p className="description-para">{product.description}</p>
               </div>
 
               <button onClick={submitReviewToggle} className="submitReview">
