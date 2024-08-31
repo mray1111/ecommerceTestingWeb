@@ -36,7 +36,9 @@ const options = {
 };
 
 const Header = () => {
-  return <ReactNavbar {...options} />;
+  return <div className="nav-bar">
+    <ReactNavbar {...options} />;
+  </div>
 };
 
 export default Header;

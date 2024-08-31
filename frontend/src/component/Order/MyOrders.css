@@ -100,4 +100,9 @@
   .MuiDataGrid-columnHeader div {
     font: 400 2.5vw "Roboto" !important; /* Adjust font size */
   }
+  .MuiDataGrid-main{
+    height: 68vh;
+    width: 90vw;
+    margin-top: 70px;
+  }
 }

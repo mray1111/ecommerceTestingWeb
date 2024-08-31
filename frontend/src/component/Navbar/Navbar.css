@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    /* overflow: hidden; */
   }
   
   body {
@@ -23,10 +24,22 @@
     justify-content: flex-end;
     align-items: center;
   }
+  @media screen and (min-width:600px) {
+    nav li {
+      height: 35px;
+      font-size: small;
+      border-bottom: 2px solid transparent; /* Initial invisible underline */
+      transition: color 0.3s ease, font-size 0.3s ease, border-bottom 0.3s ease;
+    }
   
-  nav li {
-    height: 50px;
+    nav li:hover {
+      color: blue;
+      font-size:15px;
+      border-bottom: 2px solid black; /* Shadow underline */
+      text-shadow: 0.01px 0.01px 0.02px rgba(0, 0, 0,0); /* Add a black shadow for the text */
+    }
   }
+  
   
   /* Targeting the Link components */
   nav li a, nav li Link {
@@ -47,11 +60,12 @@
   }
   
   .sidebar {
-    position: fixed;
+    /* position: fixed;
     top: 0;
     right: 0;
     height: 100vh;
-    width: 250px;
+    width: 250px; */
+    /* position: fixed; */
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
     box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
@@ -88,7 +102,14 @@
   
   @media (max-width: 400px) {
     .sidebar {
+      /* height: 531vh; */
       width: 100%;
+      z-index: 4;
+      position: relative;
+      top: -11px;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      
     }
     .nav-menu{
         display: none;

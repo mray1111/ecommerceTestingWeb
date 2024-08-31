@@ -10,7 +10,7 @@ import Loader from "../layout/loader/Loader";
 import { useAlert } from "react-alert";
 import Metadata from "../layout/Metadata";
 import { addItemsToCart } from "../../actions/cartAction";
-
+import Navbar from '../Navbar/Navbar.js'
 
 import {
   Dialog,
@@ -113,6 +113,7 @@ const ProductDetails = () => {
       ) : (
         <Fragment>
           <Metadata title={`${product.name} --- Ecommerce`} />
+          <Navbar/>
           <div className="ProductDetails">
             <div>
               <div>

@@ -61,12 +61,12 @@ const Home = () => {
         </a>
 </div>
 
-          <h1>Unbox Joy, Discover Style</h1>
+          <h1>Shop with us, with style </h1>
             {/* <h2>Namaste BHARAT</h2> */}
 
             <a href="#container">
               <button>
-                Scroll <CgMouse />
+                Scroll down <CgMouse />
               </button>
             </a>
           </div>

@@ -412,9 +412,17 @@
   }
   .reviews{
     overflow-x: hidden;
+    margin-left: -4px;
+    width: 100vw;
+    height: 64vw
   }
   .reviewCard{
     width: 271px;
+  }
+  .button-cart{
+    height: 38px;
+    width: 253px;
+    margin-left: -12px
   }
  
 }

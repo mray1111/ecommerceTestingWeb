@@ -1,5 +1,5 @@
 .banner {
-  background-image: url("../../images/cover.jfif");
+  background-image: url("../Navbar/laptop.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9,7 +9,8 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  color: white;
+  color:white;
+  font-size: 50px;
 }
 
 .banner > h1 {
@@ -45,7 +46,7 @@
   position: absolute;
   top: 0%;
   left: 0;
-  clip-path: polygon(100% 68%, 0 100%, 100% 100%);
+  clip-path: polygon(100% 100%, 0 100%, 100% 100%);
   max-width: 100%;
 }
 

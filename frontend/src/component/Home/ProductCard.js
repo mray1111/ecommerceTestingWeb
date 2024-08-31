@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
       {/* Use imageUrl if it's defined, or a placeholder image */}
       <img className='productCard-img' src={imageUrl || 'placeholder-image-url'} alt={product ? product.name : 'Product'} />
       <p>{product ? product.name : 'Product'}</p>
-      <span>{`$ ${product ? product.price : 0}`}</span>
+      <span>{`₹ ${product ? product.price : 0}`}</span>
 
       <div>
         <ReactStars {...options} />
