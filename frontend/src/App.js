@@ -40,8 +40,7 @@ import UsersList from './component/admin/UsersList';
 import UpdateUser from './component/admin/UpdateUser'; 
 import ProductReviews from "./component/admin/ProductReviews"
 
-
-
+// "proxy": "https://e-commerce-web-backend-1-j8xa.onrender.com"
 
 
 function App() {

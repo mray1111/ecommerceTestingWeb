@@ -5,6 +5,7 @@ const sendEmail = require("../utils/sendEmail");
 const ErrorHander=require("../utils/errorHander");
 const crypto=require("crypto");
 const cloudinary=require("cloudinary");
+const FRONTEND_URL=process.env.FRONTEND_URL || "http://localhost:3000"
 
 //Register a User
 exports.registerUser=catchAsyncErrors(async(req,res,next)=>{
@@ -103,7 +104,7 @@ exports.forgotPassword = catchAsyncErrors(async(req, res, next) => {
   
 
     //For FrontEnd
-    const resetPasswordUrl = `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
+    const resetPasswordUrl = `${FRONTEND_URL}/password/reset/${resetToken}`;
   
     
     // const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;

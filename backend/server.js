@@ -17,15 +17,20 @@ process.on("uncaughtException", (err) => {
 
 connectDatabase();
 
+const CLOUDINARY_NAME = process.env.CLOUDINARY_NAME || "dbzkygnbh";
+const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY || "433441131784874";
+const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET || "ErfgidwpufrSCjAjuWx8gQS8f3Q";
+const PORT = process.env.PORT || 4000;
+
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: CLOUDINARY_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET,
 });
 
 
-const server = app.listen(process.env.PORT, () => {
-    console.log(`Server is working on http://localhost:${process.env.PORT}`);
+const server = app.listen(PORT, () => {
+    console.log(`Server is working on http://localhost:${PORT}`);
   });
 
  // console.log(hereerror)

@@ -7,7 +7,7 @@ import {clearErrors, getProduct} from "../../actions/productActions"
 import {useSelector, useDispatch} from "react-redux";
 import Loader from "../layout/loader/Loader";
 import { useAlert } from "react-alert";
-
+import { Link } from "react-router-dom";
 import {VscAccount}  from "react-icons/vsc"
 import {BsFillCartPlusFill} from  "react-icons/bs"
 import {ImSearch} from "react-icons/im"
@@ -51,15 +51,15 @@ const Home = () => {
           <div className="banner">
             <p>Welcome to  IKOM-Ecommerce</p>
             <div className="flex-container">
-        <a href="http://localhost:3000/account">
+        <Link to="/account">
           <VscAccount className="Larger_acc" />
-        </a>
-        <a href="http://localhost:3000/cart">
+        </Link>
+        <Link to="/cart">
           <BsFillCartPlusFill className="Larger" />
-        </a>
-        <a href="http://localhost:3000/Search">
+        </Link>
+        <Link to="/Search">
           <ImSearch className="Larger" />
-        </a>
+        </Link>
 </div>
 
           <h1>Shop with us, with style </h1>
