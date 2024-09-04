@@ -5,11 +5,11 @@ const User = require("../models/userModel");
 const JWT_SECRET=process.env.JWT_SECRET || "JSHLISJLDISJLSJFJLSSHSIIS"
 
 exports.isAuthenticatedUser = catchAsyncErrors(async(req, res, next) => {
-  const { token } = req.cookies;
-  //console.log(token);
-  if (!token) {
-    return next(new ErrorHander("Please Login to access this resource/ Page ", 401));
-  }
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return next(new ErrorHander('Unauthorized', 401));
+    }
+    const token = authHeader.split(' ')[1]; // Extract the token after 'Bearer'
 
   const decodedData = jwt.verify(token,JWT_SECRET);
 

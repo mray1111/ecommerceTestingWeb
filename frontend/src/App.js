@@ -14,7 +14,7 @@ import store from "./store";
 import { loadUser } from './actions/userAction';
 import { useSelector } from 'react-redux';
 import Profile from "./component/User/Profile.js"
-import ProtectedRoute from './component/Route/ProtectedRoute';
+// import ProtectedRoute from './component/Route/ProtectedRoute';
 import UpdateProfile from "./component/User/UpdateProfile"
 import UpdatePassword from "./component/User/UpdatePassword"
 import ForgotPassword from "./component/User/ForgotPassword.js"
@@ -44,7 +44,7 @@ import ProductReviews from "./component/admin/ProductReviews"
 
 
 function App() {
-  
+  const BACKEND_URL = "https://e-commerce-web-backend-1-j8xa.onrender.com";
   const shouldRenderConfirmOrder = 1;
 
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -52,7 +52,7 @@ function App() {
 
   async function getStripeApiKey() {
     try {
-      const { data } = await axios.get('/api/v1/stripeapikey');
+      const { data } = await axios.get(`${BACKEND_URL}/api/v1/stripeapikey`);
       setStripeApiKey(data.stripeApiKey);
     } catch (error) {
       console.error('Error fetching Stripe API key:', error);
@@ -76,7 +76,7 @@ function App() {
      
   <BrowserRouter>
       <Header/>
-         {isAuthenticated && <UserOptions user ={user}/>}
+         {isAuthenticated && user && <UserOptions  user ={user}/>}
 
         <Routes>
           <Route path="/" element={<Home />} />
