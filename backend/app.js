@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser=require("body-parser");
 const fileUpload=require("express-fileupload");
 const dotenv=require("dotenv");
-// const path=require("path");
+const path=require("path");
 const cors = require("cors");
 const errorMiddleware=require("./middleware/error");
 
@@ -18,7 +18,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(fileUpload());
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000", // Replace with your frontend's URL
+    origin:["https://famous-zuccutto-192843.netlify.app"], // Replace with your frontend's URL
     credentials: true,
     allowedHeaders: ["Authorization", "Content-Type"],
 }));
